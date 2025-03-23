@@ -1,0 +1,11 @@
+git
+curl
+htop
+vim
+zsh
+stow
+i3
+network-manager-gnome
+lxappearance
+x11-utils
+fzf

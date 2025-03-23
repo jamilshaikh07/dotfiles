@@ -1,0 +1,9 @@
+wezterm
+terraform
+kubectl
+azure-cli
+google-cloud-sdk
+obsidian
+google-chrome
+brave-browser
+fzf

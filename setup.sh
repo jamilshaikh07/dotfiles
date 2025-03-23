@@ -1,6 +1,7 @@
 #!/bin/bash
 # Define username
 USERNAME="james"
+
 # Grant sudo access without a password
 echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/$USERNAME
 # Avoid any interactive prompts
@@ -41,7 +42,9 @@ sudo apt update && sudo apt install -y 1password
 
 # Install Oh My Zsh (Non-interactive)
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    export RUNZSH="no"
+    export KEEP_ZSHRC="yes"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 # Install zsh plugins
@@ -50,16 +53,18 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_CUSTOM/plug
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
 # Enable plugins in .zshrc
 sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
-# Set Zsh as default shell
-chsh -s $(which zsh)
+
+# Set Zsh as default shell without user prompt
+echo "Changing shell to Zsh..."
+echo "$USERNAME" | chsh -s $(which zsh)
 
 # Install Homebrew (Non-interactive)
 if [ ! -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo | NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Install Starship prompt (Non-interactive)
-curl -sS https://starship.rs/install.sh | sh -s -- -y
+curl -sS https://starship.rs/install.sh | sh -s -- --yes
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
 echo "Setup completed! Restart your system for all changes to take effect."

@@ -59,7 +59,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(ssh-agent -s)" > /dev/null 2>&1
 ssh-add ~/.ssh/jamilshaikh07-github > /dev/null 2>&1
 
-source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH=$HOME/.local/bin:$PATH
 alias ub='multipass shell dazzling-grub'
 

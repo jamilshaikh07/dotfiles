@@ -59,17 +59,17 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(ssh-agent -s)" > /dev/null 2>&1
 ssh-add ~/.ssh/jamilshaikh07-github > /dev/null 2>&1
 
-source /home/jamil-shaikh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH=$HOME/.local/bin:$PATH
 alias ub='multipass shell dazzling-grub'
 
 alias wt='wezterm cli set-tab-title'
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
 
 
 export KUBE_EDITOR='code --wait'

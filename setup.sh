@@ -9,7 +9,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Update and install required packages
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y vim git tmux openssh-server htop lxappearance i3 pasystray picom neofetch zsh curl wget
+sudo apt install -y vim git tmux openssh-server htop lxappearance i3 pasystray neofetch zsh curl wget stow
 
 # Install WezTerm
 WEZTERM_KEYRING="/etc/apt/keyrings/wezterm-fury.gpg"

@@ -29,7 +29,6 @@ curl -LO "$NVIM_URL"
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 rm -f nvim-linux-x86_64.tar.gz
 rm -rf ~/.config/nvim/.git
-git clone https://github.com/LazyVim/starter ~/.config/nvim
 
 # Install 1Password using the official repository
 sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/

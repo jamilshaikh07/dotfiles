@@ -67,11 +67,13 @@ CompanyGroupFrobozzOnCallAccess = 'Frobozz'
 
 [gcloud]
 symbol = '️🇬️ '
-format = 'gcp [$symbol$account]($style) '
+format = 'on [$symbol$account (\($project\))]($style) '
 style = 'bold yellow'
 
 [gcloud.region_aliases]
 account = 'jamil'
 us-central1 = 'uc1'
-us-east1 = 'ue1'
-asia-northeast1 = 'an1'
+
+[gcloud.project_aliases]
+beamer-staging = 'STG'
+getbeamer = 'PROD'

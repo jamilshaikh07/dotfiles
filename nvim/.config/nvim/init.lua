@@ -1,7 +1,7 @@
 -- Set leader key
 vim.g.mapleader = " " -- Spacebar is the leader key
 
--- Enable line numbers 
+-- Enable line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
 
@@ -20,6 +20,11 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHo
   command = "checktime",
 })
 
+-- yank to clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+
+-- nvim-comment
+vim.keymap.set({ "n", "v" }, "<leader>/", ":CommentToggle<cr>")
 
 -- Install lazy.nvim (Plugin Manager)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -38,6 +43,23 @@ require("lazy").setup({
   { "nvim-telescope/telescope.nvim",             dependencies = { "nvim-lua/plenary.nvim" } },
   { "nvim-telescope/telescope-file-browser.nvim" }, -- File browser
   { "windwp/nvim-autopairs" },                      -- Autopairs plugin
+  -- File tree
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    requires = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {
+        disable_netrw = true,
+        view = {
+          width = 30,
+        },
+      }
+    end,
+  },
   {
     "folke/trouble.nvim",
     opts = {}, -- for default options, refer to the configuration section for custom setup.
@@ -160,25 +182,46 @@ require("lazy").setup({
   { "folke/tokyonight.nvim" },
   { "Mofiqul/vscode.nvim" },
   { "ofseed/copilot-status.nvim" },
-  { "folke/persistence.nvim" }, -- persistant sessions
+  -- { "folke/persistence.nvim" }, -- persistant sessions
+  -- Save and load buffers (a session) automatically for each folder
+  {
+    'rmagatti/auto-session',
+    config = function()
+      require("auto-session").setup {
+        log_level = "error",
+        auto_session_suppress_dirs = { "~/", "~/Downloads" },
+      }
+    end
+  },
+  -- Comment code
+  {
+    'terrortylor/nvim-comment',
+    config = function()
+      require("nvim_comment").setup({ create_mappings = false })
+    end
+  }
 })
 
 -- Theme
 vim.cmd("colorscheme vscode")
 
--- persistence (Save and restore sessions)
-require("persistence").setup({
-  dir = vim.fn.expand(vim.fn.stdpath("data") .. "/sessions/"), -- Store sessions in a specific directory
-  options = { "buffers", "curdir", "tabpages", "winsize" }     -- What to save
-})
+-- -- persistence (Save and restore sessions)
+-- require("persistence").setup({
+--   dir = vim.fn.expand(vim.fn.stdpath("data") .. "/sessions/"), -- Store sessions in a specific directory
+--   options = { "buffers", "curdir", "tabpages", "winsize" }     -- What to save
+-- })
+--
+-- -- Mappings to save and restore sessions
+-- vim.api.nvim_set_keymap("n", "<leader>qs", "<cmd>lua require('persistence').save()<CR>",
+--   { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader>ql", "<cmd>lua require('persistence').load()<CR>",
+--   { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader>qd", "<cmd>lua require('persistence').stop()<CR>",
+--   { noremap = true, silent = true })
+--
 
--- Mappings to save and restore sessions
-vim.api.nvim_set_keymap("n", "<leader>qs", "<cmd>lua require('persistence').save()<CR>",
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ql", "<cmd>lua require('persistence').load()<CR>",
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>qd", "<cmd>lua require('persistence').stop()<CR>",
-  { noremap = true, silent = true })
+-- tree
+vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<cr>")
 
 -- Lualine (Bottom Status Bar)
 require("lualine").setup({
@@ -254,7 +297,7 @@ npairs.setup({
 -- Telescope (File Searcher like Ctrl+P in VS Code)
 local telescope = require("telescope")
 telescope.load_extension("file_browser")
-vim.keymap.set("n", "<leader>e", ":Telescope file_browser<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>e", ":Telescope file_browser<CR>", { silent = true })
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { silent = true })
 vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", { silent = true })
 vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", { silent = true })

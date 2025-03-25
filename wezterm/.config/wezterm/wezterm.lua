@@ -13,7 +13,9 @@ end
 -- config.color_scheme = "Catppuccin Macchiato"
 config.color_scheme = 'Tangoesque (terminal.sexy)'
 
-config.font_size = 10
+config.font_size = 9
+config.font = wezterm.font 'Fira Code'
+--config.font = wezterm.font ('Fira Code',{ weight= 'DemiBold'})
 config.window_decorations = "RESIZE"
 config.default_cursor_style = 'SteadyBar'
 

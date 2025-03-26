@@ -53,6 +53,9 @@ alias gcli='gcloud'
 alias n='nvim'
 alias beam="cd ~/workspace/beamer"
 alias c='clear'
+alias bpro="gcloud config configurations activate prod-config && gcloud auth application-default set-quota-project getbeamer"
+alias bstg="gcloud config configurations activate stg-config && gcloud auth application-default set-quota-project beamer-staging"
+alias ls='eza'
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
@@ -64,13 +67,16 @@ alias ub='multipass shell dazzling-grub'
 
 alias wt='wezterm cli set-tab-title'
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
-
-
-export KUBE_EDITOR='code --wait'
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/jamil-shaikh/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jamil-shaikh/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/jamil-shaikh/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jamil-shaikh/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

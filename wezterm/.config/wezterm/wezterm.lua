@@ -11,7 +11,8 @@ if wezterm.config_builder then
 end
 
 -- config.color_scheme = "Catppuccin Macchiato"
-config.color_scheme = 'Tangoesque (terminal.sexy)'
+--config.color_scheme = 'Tangoesque (terminal.sexy)'
+config.color_scheme = 'GruvboxDarkHard'
 
 config.font_size = 9
 config.font = wezterm.font 'Fira Code'

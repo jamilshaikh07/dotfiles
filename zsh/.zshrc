@@ -55,8 +55,6 @@ alias beam="cd ~/workspace/beamer"
 alias c='clear'
 alias bpro="gcloud config configurations activate prod-config && gcloud auth application-default set-quota-project getbeamer"
 alias bstg="gcloud config configurations activate stg-config && gcloud auth application-default set-quota-project beamer-staging"
-alias ls='eza'
-alias ll='eza -l'
 alias dot='cd ~/dotfiles'
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 

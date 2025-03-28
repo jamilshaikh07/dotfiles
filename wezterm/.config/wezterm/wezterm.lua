@@ -40,75 +40,106 @@ config.keys = {
     key = "x",
     action = wezterm.action.CloseCurrentPane { confirm = true },
   },
+  --  {
+  --    mods = "ALT",
+  --    key = "[",
+  --    action = wezterm.action.ActivateTabRelative(-1),
+  --  },
+  --  {
+  --    mods = "ALT",
+  --    key = "]",
+  --    action = wezterm.action.ActivateTabRelative(1),
+  --  },
+  --  {
+  --    mods = "ALT",
+  --    key = "r",
+  --    action = wezterm.action.SplitHorizontal { domain = "CurrentPaneDomain" },
+  --  },
+  --  {
+  --    mods = "ALT",
+  --    key = "e",
+  --    action = wezterm.action.SplitVertical { domain = "CurrentPaneDomain" },
+  --  },
+  --  {
+  --    mods = "ALT",
+  --    key = "LeftArrow",
+  --    action = wezterm.action.ActivatePaneDirection "Next"
+  --  },
+  --  {
+  --    mods = "ALT",
+  --    key = "DownArrow",
+  --    action = wezterm.action.ActivatePaneDirection "Down"
+  --  },
+  --  {
+  --    mods = "ALT",
+  --    key = "UpArrow",
+  --    action = wezterm.action.ActivatePaneDirection "Up"
+  --  },
+  --  {
+  --    mods = "ALT",
+  --    key = "RightArrow",
+  --    action = wezterm.action.ActivatePaneDirection "Prev"
+  --  },
+  --  {
+  --    mods = "ALT",
+  --    key = "h",
+  --    action = wezterm.action.ActivatePaneDirection "Prev"
+  --  },
+  --  {
+  --    mods = "ALT",
+  --    key = "j",
+  --    action = wezterm.action.ActivatePaneDirection "Down"
+  --  },
+  --  {
+  --    mods = "ALT",
+  --    key = "k",
+  --    action = wezterm.action.ActivatePaneDirection "Up"
+  --  },
+  --  {
+  --    mods = "ALT",
+  --    key = "l",
+  --    action = wezterm.action.ActivatePaneDirection "Next"
+  --  },
+  --  {
+  --    mods = "ALT",
+  --    key = "s",
+  --    action = wezterm.action.ActivatePaneDirection "Next"
+  --  },
+  --  {
+  --    mods = "ALT",
+  --    key = "a",
+  --    action = wezterm.action.ActivatePaneDirection "Prev"
+  --  },
+
   {
-    mods = "ALT",
-    key = "[",
-    action = wezterm.action.ActivateTabRelative(-1),
-  },
-  {
-    mods = "ALT",
-    key = "]",
-    action = wezterm.action.ActivateTabRelative(1),
-  },
-  {
-    mods = "ALT",
-    key = "r",
-    action = wezterm.action.SplitHorizontal { domain = "CurrentPaneDomain" },
-  },
-  {
-    mods = "ALT",
-    key = "e",
-    action = wezterm.action.SplitVertical { domain = "CurrentPaneDomain" },
-  },
-  {
-    mods = "ALT",
-    key = "LeftArrow",
-    action = wezterm.action.ActivatePaneDirection "Next"
-  },
-  {
-    mods = "ALT",
-    key = "DownArrow",
-    action = wezterm.action.ActivatePaneDirection "Down"
-  },
-  {
-    mods = "ALT",
-    key = "UpArrow",
-    action = wezterm.action.ActivatePaneDirection "Up"
-  },
-  {
-    mods = "ALT",
-    key = "RightArrow",
-    action = wezterm.action.ActivatePaneDirection "Prev"
-  },
-  {
-    mods = "ALT",
+    mods = "LEADER",
     key = "h",
     action = wezterm.action.ActivatePaneDirection "Prev"
   },
   {
-    mods = "ALT",
+    mods = "LEADER",
     key = "j",
     action = wezterm.action.ActivatePaneDirection "Down"
   },
   {
-    mods = "ALT",
+    mods = "LEADER",
     key = "k",
     action = wezterm.action.ActivatePaneDirection "Up"
   },
   {
-    mods = "ALT",
+    mods = "LEADER",
     key = "l",
     action = wezterm.action.ActivatePaneDirection "Next"
   },
   {
-    mods = "ALT",
-    key = "s",
-    action = wezterm.action.ActivatePaneDirection "Next"
+    mods = "LEADER",
+    key = "r",
+    action = wezterm.action.SplitHorizontal { domain = "CurrentPaneDomain" },
   },
   {
-    mods = "ALT",
-    key = "a",
-    action = wezterm.action.ActivatePaneDirection "Prev"
+    mods = "LEADER",
+    key = "e",
+    action = wezterm.action.SplitVertical { domain = "CurrentPaneDomain" },
   },
 
   {
@@ -135,26 +166,6 @@ config.keys = {
     mods = "LEADER",
     key = "w",
     action = wezterm.action.CloseCurrentPane { confirm = true },
-  },
-  {
-    mods = "LEADER",
-    key = "h",
-    action = wezterm.action.AdjustPaneSize { "Left", 5 }
-  },
-  {
-    mods = "LEADER",
-    key = "l",
-    action = wezterm.action.AdjustPaneSize { "Right", 5 }
-  },
-  {
-    mods = "LEADER",
-    key = "j",
-    action = wezterm.action.AdjustPaneSize { "Down", 5 }
-  },
-  {
-    mods = "LEADER",
-    key = "k",
-    action = wezterm.action.AdjustPaneSize { "Up", 5 }
   },
 
 }

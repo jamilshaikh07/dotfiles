@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="amuse"
-plugins=(argocd ansible  aws azure terraform golang git zsh-autosuggestions zsh-syntax-highlighting helm kubectl brew)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 eval "$(starship init zsh)"
 alias aa='sudo apt update'
@@ -22,10 +22,7 @@ alias ff='fzf'
 alias kc='kubectx'
 alias kn='kubens'
 alias ww='cd ~/workspace'
-alias ic='cd ~/workspace/ic'
-alias tt='cd ~/workspace/tfaz'
 alias tf='terraform'
-alias tg='terragrunt'
 alias dg='dig +short myip.opendns.com @resolver1.opendns.com'
 alias ll='ls -lcrht'
 # kubernetes
@@ -49,26 +46,22 @@ alias ke='kubectl edit'
 alias ns='nslookup -type=any'
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
-alias gcli='gcloud'
 alias n='nvim'
 alias beam="cd ~/workspace/beamer"
-alias c='clear'
 alias bpro="gcloud config configurations activate prod-config && gcloud auth application-default set-quota-project getbeamer"
 alias bstg="gcloud config configurations activate stg-config && gcloud auth application-default set-quota-project beamer-staging"
 alias dot='cd ~/dotfiles'
+alias wt='wezterm cli set-tab-title'
+
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 eval "$(ssh-agent -s)" > /dev/null 2>&1
 ssh-add ~/.ssh/jamilshaikh07-github > /dev/null 2>&1
 
 export PATH=$HOME/.local/bin:$PATH
-alias ub='multipass shell dazzling-grub'
-
-alias wt='wezterm cli set-tab-title'
 
 
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -37,6 +37,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 -- Plugins
 require("lazy").setup({
   -- Navigation
@@ -114,62 +115,68 @@ require("lazy").setup({
 
   -- LSP & Code Assistance
   { "neovim/nvim-lspconfig" },
+  {
+    "folke/ts-comments.nvim",
+    opts = {},
+    event = "VeryLazy",
+    enabled = vim.fn.has("nvim-0.10.0") == 1,
+  },
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
   { "hrsh7th/nvim-cmp",                 dependencies = { "hrsh7th/cmp-nvim-lsp" } }, -- Autocomplete
   { "github/copilot.vim" },                                                          -- AI-powered coding
   { "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate" },
-  -- { "jose-elias-alvarez/null-ls.nvim" },                                             -- Linting & Formatting
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    version = false, -- Never set this value to "*"! Never!
-    opts = {
-      -- add any opts here
-      -- for example
-    },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
-      "echasnovski/mini.pick",         -- for file_selector provider mini.pick
-      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua",              -- for file_selector provider fzf
-      "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua",        -- for providers='copilot'
-      {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            -- required for Windows users
-            use_absolute_path = true,
-          },
-        },
-      },
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
-    },
-  },
+  { "jose-elias-alvarez/null-ls.nvim" },                                             -- Linting & Formatting
+  -- {
+  --   "yetone/avante.nvim",
+  --   event = "VeryLazy",
+  --   version = false, -- Never set this value to "*"! Never!
+  --   opts = {
+  --     -- add any opts here
+  --     -- for example
+  --   },
+  --   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  --   build = "make",
+  --   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+  --   dependencies = {
+  --     "nvim-treesitter/nvim-treesitter",
+  --     "stevearc/dressing.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --     --- The below dependencies are optional,
+  --     "echasnovski/mini.pick",         -- for file_selector provider mini.pick
+  --     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+  --     "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
+  --     "ibhagwan/fzf-lua",              -- for file_selector provider fzf
+  --     "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+  --     "zbirenbaum/copilot.lua",        -- for providers='copilot'
+  --     {
+  --       -- support for image pasting
+  --       "HakonHarnes/img-clip.nvim",
+  --       event = "VeryLazy",
+  --       opts = {
+  --         -- recommended settings
+  --         default = {
+  --           embed_image_as_base64 = false,
+  --           prompt_for_file_name = false,
+  --           drag_and_drop = {
+  --             insert_mode = true,
+  --           },
+  --           -- required for Windows users
+  --           use_absolute_path = true,
+  --         },
+  --       },
+  --     },
+  --     {
+  --       -- Make sure to set this up properly if you have lazy=true
+  --       'MeanderingProgrammer/render-markdown.nvim',
+  --       opts = {
+  --         file_types = { "markdown", "Avante" },
+  --       },
+  --       ft = { "markdown", "Avante" },
+  --     },
+  --   },
+  -- },
 
   -- Git & Buffers
   { "lewis6991/gitsigns.nvim" },
@@ -181,8 +188,9 @@ require("lazy").setup({
   { "nvim-tree/nvim-web-devicons" }, -- Icons for Tree and Bufferline
   { "folke/tokyonight.nvim" },
   { "Mofiqul/vscode.nvim" },
+  { "Skardyy/makurai-nvim" },
   { "ofseed/copilot-status.nvim" },
-  -- { "folke/persistence.nvim" }, -- persistant sessions
+  { "arturgoms/moonbow.nvim" },
   -- Save and load buffers (a session) automatically for each folder
   {
     'rmagatti/auto-session',
@@ -197,31 +205,29 @@ require("lazy").setup({
   {
     'terrortylor/nvim-comment',
     config = function()
-      require("nvim_comment").setup({ create_mappings = false })
+      require("nvim_comment").setup()
     end
   }
 })
 
 -- Theme
 vim.cmd("colorscheme vscode")
-
--- -- persistence (Save and restore sessions)
--- require("persistence").setup({
---   dir = vim.fn.expand(vim.fn.stdpath("data") .. "/sessions/"), -- Store sessions in a specific directory
---   options = { "buffers", "curdir", "tabpages", "winsize" }     -- What to save
--- })
---
--- -- Mappings to save and restore sessions
--- vim.api.nvim_set_keymap("n", "<leader>qs", "<cmd>lua require('persistence').save()<CR>",
---   { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>ql", "<cmd>lua require('persistence').load()<CR>",
---   { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>qd", "<cmd>lua require('persistence').stop()<CR>",
---   { noremap = true, silent = true })
---
+-- vim.cmd("colorscheme moonbow")
 
 -- tree
 vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<cr>")
+
+-- switch panes with Ctrl + hjkl
+vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true })
+
+-- split panes with Ctrl + /
+vim.keymap.set("n", "<C-/>", ":vsplit<CR>", { silent = true })
+
+-- split panes with Ctrl + .
+vim.keymap.set("n", "<C-.>", ":split<CR>", { silent = true })
 
 -- Lualine (Bottom Status Bar)
 require("lualine").setup({
@@ -245,7 +251,9 @@ require("lualine").setup({
 
 -- LSP & Autocompletion
 require("mason").setup()
-require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "yamlls", "jsonls", "terraformls", "bashls" } })
+require("mason-lspconfig").setup({ 
+	ensure_installed = { "lua_ls", "yamlls", "jsonls", "terraformls", "bashls" },
+})
 -- Configure Installed LSPs
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup {}
@@ -259,6 +267,20 @@ vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show Diagn
 vim.keymap.set("n", "<leader>n", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
 vim.keymap.set("n", "<leader>p", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Show All Diagnostics" })
+
+vim.g["diagnostics_active"] = true
+function Toggle_diagnostics()
+  if vim.g.diagnostics_active then
+    vim.g.diagnostics_active = false
+    vim.diagnostic.disable()
+  else
+    vim.g.diagnostics_active = true
+    vim.diagnostic.enable()
+  end
+end
+
+vim.keymap.set('n', '<leader>xd', Toggle_diagnostics, { noremap = true, silent = true, desc = "Toggle vim diagnostics" })
+
 require("lspconfig").lua_ls.setup({
   settings = {
     Lua = {
@@ -289,10 +311,6 @@ npairs.setup({
   disable_filetype = { "TelescopePrompt", "vim" },
   fast_wrap = {},
 })
-
--- oil.nvim (File Explorer like VS Code)
--- require("oil").setup()
--- vim.keymap.set("n", "<leader>o", ":Oil<CR>", { silent = true }) -- To open Oil
 
 -- Telescope (File Searcher like Ctrl+P in VS Code)
 local telescope = require("telescope")
@@ -347,17 +365,18 @@ vim.g.copilot_enabled = true
 vim.g.copilot_filetypes = { "terraform", "python", "bash", "sh", "hcl", "yaml" }
 -- vim.keymap.set("i", "<C-l>", "copilot#Accept('<CR>')", { expr = true, silent = true })
 vim.api.nvim_set_keymap("i", "<C-l>", "copilot#Accept('<CR>')", { expr = true, silent = true })
+
 -- Formatter (Prettier)
--- local null_ls = require("null-ls")
--- null_ls.setup({
---   sources = {
---     null_ls.builtins.formatting.prettier,            -- JSON/YAML auto-formatting
---     null_ls.builtins.formatting.stylua,              -- Lua formatting
---     null_ls.builtins.diagnostics.shellcheck,         -- Shell script linting
---     null_ls.builtins.diagnostics.terraform_validate, -- Terraform validation
---     null_ls.builtins.formatting.shfmt,               -- Shell script formatting
---   },
--- })
+local null_ls = require("null-ls")
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.prettier,            -- JSON/YAML auto-formatting
+    null_ls.builtins.formatting.stylua,              -- Lua formatting
+    null_ls.builtins.diagnostics.shellcheck,         -- Shell script linting
+    null_ls.builtins.diagnostics.terraform_validate, -- Terraform validation
+    null_ls.builtins.formatting.shfmt,               -- Shell script formatting
+  },
+})
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]] -- Auto-format on save
 
 -- Bufferline (Show open buffers like VS Code)
@@ -372,7 +391,8 @@ vim.keymap.set("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", { silent = true 
 vim.cmd("set guifont=FiraCode\\ Nerd\\ Font:h10")
 
 -- Set background color
-vim.cmd("set background=dark")
+-- vim.cmd("set background=dark")
+vim.o.background = "dark"  -- Set background to dark
 
 vim.opt.tabstop = 2        -- Number of spaces that a <Tab> in the file counts for
 vim.opt.shiftwidth = 2     -- Size of an indent
@@ -388,3 +408,15 @@ require("nvim-web-devicons").setup() -- Ensure icons are enabled
 
 -- no highlighting after search
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { silent = true })
+
+-- treesitter config for terraform python
+require("nvim-treesitter.configs").setup({
+  ensure_installed = { "lua", "python", "terraform", "go", "markdown", "bash" }, -- List of parsers to install
+  highlight = {
+    enable = true,                                                               -- Enable highlighting
+    additional_vim_regex_highlighting = false,
+  },
+  indent = {
+    enable = true, -- Enable indentation
+  },
+})

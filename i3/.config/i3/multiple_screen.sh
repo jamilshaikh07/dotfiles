@@ -26,3 +26,8 @@ if [ "$connected_displays" -gt 1 ]; then
 else
     xrandr --auto
 fi
+
+xset s noblank
+xset s off
+xset -dpms
+

@@ -11,10 +11,9 @@ if wezterm.config_builder then
 end
 
 -- config.color_scheme = "Catppuccin Macchiato"
---config.color_scheme = 'Tangoesque (terminal.sexy)'
-config.color_scheme = 'GruvboxDarkHard'
-
-config.font_size = 9
+-- config.color_scheme = 'GruvboxDarkHard'
+config.color_scheme = 'Guezwhoz'
+config.font_size = 10
 config.font = wezterm.font 'Fira Code'
 --config.font = wezterm.font ('Fira Code',{ weight= 'DemiBold'})
 config.window_decorations = "RESIZE"
@@ -170,14 +169,6 @@ config.keys = {
 
 }
 
-for i = 1, 9 do
-  -- alt + number to activate that tab
-  table.insert(config.keys, {
-    key = tostring(i),
-    mods = "ALT",
-    action = wezterm.action.ActivateTab(i - 1),
-  })
-end
 
 for i = 1, 9 do
   -- leader + number to activate that tab

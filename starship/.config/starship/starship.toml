@@ -1,7 +1,7 @@
-[custom.tztime]
-command = 'date +"%a %b %d %R:%S"'
-when = "false"
-format = '[\[$symbol($output)\]](green)'
+# [custom.tztime]
+# command = 'date +"%a %b %d %R:%S"'
+# when = "false"
+# format = '[\[$symbol($output)\]](green)'
 
 [azure]
 disabled = true
@@ -53,8 +53,6 @@ format = '[tf $workspace]($style) '
 [python]
 disabled = true
 
-# ~/.config/starship.toml
-
 [aws]
 format = 'aws [$symbol($profile )(\($region\) )]($style)'
 style = 'bold green'
@@ -72,7 +70,7 @@ style = 'bold yellow'
 
 [gcloud.region_aliases]
 account = 'jamil'
-us-central1 = 'uc1'
+us-east1 = 'ue1'
 
 [gcloud.project_aliases]
 beamer-staging = 'STG'

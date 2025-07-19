@@ -69,10 +69,7 @@ set cursorline
 
 " Theme (Looks Similar to VSCode)
 syntax on
-colorscheme gruvbox
 set background=dark
-let g:gruvbox_contrast_dark = 'soft'
-
 
 " Better Control+Backspace Handling (Delete Word)
 inoremap <C-H> <C-W>

@@ -13,3 +13,17 @@ cp ~/.config/starship.toml "$BACKUP/starship.toml"
 
 echo "Backed up to $BACKUP"
 
+# pull latest, create branches if you like
+git pull
+# copy backups into each package
+rsync -a --delete ~/dotfiles_backup_$TS/i3/     i3/
+rsync -a --delete ~/dotfiles_backup_$TS/nvim/   nvim/
+rsync -a --delete ~/dotfiles_backup_$TS/tmux/   tmux/
+rsync -a --delete ~/dotfiles_backup_$TS/.zshrc .zshrc
+rsync -a --delete ~/dotfiles_backup_$TS/starship.toml starship.toml
+
+# stage, commit & push
+git add .
+git commit -m "chore: import laptop configs ($TS)"
+git push
+

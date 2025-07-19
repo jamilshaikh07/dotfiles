@@ -8,9 +8,9 @@ mkdir -p "$BACKUP"
 cp -r ~/.config/i3        "$BACKUP/i3"
 cp -r ~/.config/nvim      "$BACKUP/nvim"
 cp -r ~/.config/tmux "$BACKUP/tmux"
-cp ~/.zshrc               "$BACKUP/.zshrc"
-cp ~/.config/starship.toml "$BACKUP/starship.toml"
-cp ~/.vimrc             "$BACKUP/.vimrc"
+cp ~/.zshrc               "$BACKUP/zsh/.zshrc"
+cp ~/.config/starship.toml "$BACKUP/starship/.config/starship.toml"
+cp ~/.vimrc             "$BACKUP/vimrc/.vimrc"
 
 echo "Backed up to $BACKUP"
 
@@ -20,8 +20,8 @@ git pull
 rsync -a --delete ~/dotfiles_backup_$TS/i3/     i3/
 rsync -a --delete ~/dotfiles_backup_$TS/nvim/   nvim/
 rsync -a --delete ~/dotfiles_backup_$TS/tmux/   tmux/
-rsync -a --delete ~/dotfiles_backup_$TS/.zshrc .zshrc
-rsync -a --delete ~/dotfiles_backup_$TS/starship.toml starship.toml
+rsync -a --delete ~/dotfiles_backup_$TS/zsh/.zshrc zsh/.zshrc
+rsync -a --delete ~/dotfiles_backup_$TS/starship/.config/starship.toml starship/.config/starship.toml
 rsync -a --delete ~/dotfiles_backup_$TS/.vimrc .vimrc
 
 # stage, commit & push

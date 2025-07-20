@@ -5,9 +5,9 @@ BACKUP=~/dotfiles_backup_$TS
 mkdir -p "$BACKUP"
 
 # 2. copy your live configs
-cp -r ~/.config/i3        "$BACKUP/i3"
-cp -r ~/.config/nvim      "$BACKUP/nvim"
-cp -r ~/.config/tmux "$BACKUP/tmux"
+cp -r ~/.config/i3        "$BACKUP/.config/i3"
+cp -r ~/.config/nvim      "$BACKUP/.config/nvim"
+cp -r ~/.config/tmux "$BACKUP/.config/tmux"
 cp ~/.zshrc               "$BACKUP/zsh/.zshrc"
 cp ~/.config/starship.toml "$BACKUP/starship/.config/starship.toml"
 cp ~/.vimrc             "$BACKUP/vimrc/.vimrc"

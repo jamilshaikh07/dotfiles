@@ -53,11 +53,10 @@ alias c='clear'
 alias dw='cd ~/Downloads'
 alias ww='cd ~/workspace'
 alias ic='cd ~/workspace/ic'
-alias tt='cd ~/workspace/tfaz'
 alias dot='cd ~/dotfiles'
 alias beam="cd ~/workspace/beamer"
-alias tray="cd ~/workspace/traycer"
 alias wasd="cd ~/workspace/tfaz/homelab"
+alias tfaz="cd ~/workspace/tfaz"
 # Terraform , OpenTofu & Terragrunt
 alias tf='terraform'
 alias tg='terragrunt'

@@ -2,7 +2,9 @@
 # 1. timestamped backup dir
 TS=$(date +%Y%m%d_%H%M)
 BACKUP=~/dotfiles_backup_$TS
+# 2. create backup dir if not exists
 mkdir -p "$BACKUP"
+
 
 # 2. copy your live configs
 cp -r ~/.config/i3        "$BACKUP/.config/i3"

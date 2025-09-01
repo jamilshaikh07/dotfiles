@@ -257,10 +257,10 @@ bindsym $mod+c exec --no-startup-id zenity --calendar
 
 # padding for i3wm windows
 # Optional: disable titlebar borders for cleaner gaps
-default_border pixel 0
+# default_border pixel 0
 
 # Set global gaps
-gaps inner 1px
+gaps inner 0px
 gaps outer 0px
 
 # Enable "smart gaps": disable gaps when only one window is open

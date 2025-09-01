@@ -71,7 +71,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -255,3 +255,13 @@ bindsym $mod+Shift+P exec --no-startup-id flameshot full -p ~/Pictures/Screensho
 # open calendar
 bindsym $mod+c exec --no-startup-id zenity --calendar
 
+# padding for i3wm windows
+# Optional: disable titlebar borders for cleaner gaps
+default_border pixel 0
+
+# Set global gaps
+gaps inner 10px
+gaps outer 10px
+
+# Enable "smart gaps": disable gaps when only one window is open
+smart_gaps on

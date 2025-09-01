@@ -220,7 +220,7 @@ bar {
 
 # Custom
 for_window [class="^.*"] border pixel 2
-for_window [class="^.*"] client.focused          # I need blue #77dd77 #285577 #ffffff #2e9ef4   #285577
+for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
 for_window [class="^.*"] client.focused_inactive #bbbbbb #222222 #ffffff #484848   #222222
 # Suspend
 bindsym $mod+period exec i3lock -c 000000
@@ -265,3 +265,14 @@ gaps outer 1px
 
 # Enable "smart gaps": disable gaps when only one window is open
 smart_gaps on
+
+# For startup script
+# send new windows to fixed workspaces
+assign [class="kitty"]          1
+assign [class="ChromePersonal"] 2
+assign [class="Code"]           3
+assign [class="ChromeOffice"]   4
+assign [class="Slack"]          5
+# (optional) WhatsApp app window if you use it:
+# assign [class="whatsapp"]    6
+

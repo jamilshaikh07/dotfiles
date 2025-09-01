@@ -220,8 +220,8 @@ bar {
 
 # Custom
 for_window [class="^.*"] border pixel 2
-for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
-
+for_window [class="^.*"] client.focused          # I need blue #77dd77 #285577 #ffffff #2e9ef4   #285577
+for_window [class="^.*"] client.focused_inactive #bbbbbb #222222 #ffffff #484848   #222222
 # Suspend
 bindsym $mod+period exec i3lock -c 000000
 bindsym $mod+Shift+period exec systemctl suspend
@@ -260,8 +260,8 @@ bindsym $mod+c exec --no-startup-id zenity --calendar
 default_border pixel 0
 
 # Set global gaps
-gaps inner 10px
-gaps outer 10px
+gaps inner 5px
+gaps outer 1px
 
 # Enable "smart gaps": disable gaps when only one window is open
 smart_gaps on

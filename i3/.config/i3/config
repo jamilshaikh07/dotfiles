@@ -264,7 +264,7 @@ gaps inner 5px
 gaps outer 1px
 
 # Enable "smart gaps": disable gaps when only one window is open
-smart_gaps on
+# smart_gaps on
 
 # For startup script
 # send new windows to fixed workspaces

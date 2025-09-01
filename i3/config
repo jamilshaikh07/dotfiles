@@ -260,8 +260,8 @@ bindsym $mod+c exec --no-startup-id zenity --calendar
 default_border pixel 0
 
 # Set global gaps
-gaps inner 2px
-gaps outer 2px
+gaps inner 1px
+gaps outer 0px
 
 # Enable "smart gaps": disable gaps when only one window is open
 smart_gaps on

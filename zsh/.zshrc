@@ -16,7 +16,7 @@ alias kk='k get nodes,pods -o wide'
 alias ktp='kubectl top pods'
 alias ktn='kubectl top nodes'
 alias ktpa='kubectl top pod -A'
-alias kde='k delete'
+alias kdel='k delete'
 alias ked='k edit deployment'
 alias ka='kubectl get all'
 alias kg='kubectl get'
@@ -56,15 +56,17 @@ alias ic='cd ~/workspace/ic'
 alias dot='cd ~/dotfiles'
 alias beam="cd ~/workspace/beamer"
 alias wasd="cd ~/workspace/tfaz/homelab"
-alias tfaz="cd ~/workspace/tfaz"
+alias tt="cd ~/workspace/tfaz"
+
 # Terraform , OpenTofu & Terragrunt
 alias tf='terraform'
 alias tg='terragrunt'
-alias fu='tofu'
+alias to='tofu'
 
 # Helm
 alias hls='helm ls'
 alias hs='helm status'
+alias hla='helm ls'
 
 # Neovim
 alias n='nvim'
@@ -79,9 +81,6 @@ alias wt='wezterm cli set-tab-title'
 alias gcli='gcloud'
 alias bpro="gcloud config configurations activate prod-config && gcloud auth application-default set-quota-project getbeamer"
 alias bstg="gcloud config configurations activate stg-config && gcloud auth application-default set-quota-project beamer-staging"
-
-# Misc
-alias ub='multipass shell dazzling-grub'
 
 # Appearance
 export CLICOLOR=1

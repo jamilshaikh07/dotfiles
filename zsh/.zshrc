@@ -77,7 +77,7 @@ alias vim='nvim'
 alias t='tmux'
 alias wt='wezterm cli set-tab-title'
 set -o ignoreeof
-export IGNOREEOF=10
+export IGNORE_EOF=10
 # GCP & Cloud
 alias gcli='gcloud'
 alias bpro="gcloud config configurations activate prod-config && gcloud auth application-default set-quota-project getbeamer"

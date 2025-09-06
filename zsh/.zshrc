@@ -1,4 +1,4 @@
-# ZSH & Starship
+# ZSH & Sarship
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="amuse"
 plugins=(argocd ansible aws azure terraform golang git zsh-autosuggestions zsh-syntax-highlighting helm kubectl brew zsh-history-substring-search )
@@ -64,9 +64,9 @@ alias tg='terragrunt'
 alias to='tofu'
 
 # Helm
-alias hls='helm ls'
-alias hs='helm status'
-alias hla='helm ls'
+alias hl='helm ls'
+alias hls='helm status'
+alias hla='helm ls -A'
 
 # Neovim
 alias n='nvim'
@@ -76,8 +76,9 @@ alias vim='nvim'
 # Tmux & Terminals
 alias t='tmux'
 alias wt='wezterm cli set-tab-title'
-set -o ignoreeof
-export IGNORE_EOF=10
+setopt ignore_eof
+export IGNOREEOF=10
+
 # GCP & Cloud
 alias gcli='gcloud'
 alias bpro="gcloud config configurations activate prod-config && gcloud auth application-default set-quota-project getbeamer"

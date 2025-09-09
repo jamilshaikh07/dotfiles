@@ -234,8 +234,8 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # open file manager
-# bindsym $mod+q exec nemo
-bindsym $mod+q exec nautilus
+bindsym $mod+q exec nemo
+# bindsym $mod+q exec nautilus
 
 # cycle through workspaces
 bindsym $mod+Tab workspace next

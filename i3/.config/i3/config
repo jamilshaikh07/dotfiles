@@ -276,3 +276,5 @@ assign [class="Slack"]          5
 # (optional) WhatsApp app window if you use it:
 # assign [class="whatsapp"]    6
 
+# Bluetooth toggle profile
+bindsym $mod+b exec --no-startup-id ~/.config/i3/toggle_bluetooth.sh

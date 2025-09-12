@@ -14,7 +14,7 @@ set $mod Mod4
 set $term --no-startup-id st
 
 # multiple monitor setup
-bindsym $mod+Shift+m exec --no-startup-id ~/.config/i3/toogle_laptop_screen.sh
+bindsym $mod+Shift+m exec --no-startup-id ~/.config/i3/fahad_benq.sh
 bindsym $mod+m exec --no-startup-id xrandr --auto
 # set workspace to monitor
 # workspace 1 output eDP-1

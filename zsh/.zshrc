@@ -1,7 +1,7 @@
 # ZSH & Sarship
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="amuse"
-plugins=(argocd ansible aws azure terraform golang git zsh-autosuggestions zsh-syntax-highlighting helm kubectl brew zsh-history-substring-search )
+plugins=(argocd ansible aws azure terraform golang git zsh-autosuggestions zsh-syntax-highlighting helm kubectl brew history-substring-search )
 
 # Load Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
@@ -124,3 +124,11 @@ if [ -f '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jami
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+# fzf keybindings & completion (added by installer)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Now Ctrl-R opens an interactive history list you can fuzzy-filter
+export FZF_DEFAULT_COMMAND='fd -H -t f --strip-cwd-prefix'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+

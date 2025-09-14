@@ -48,6 +48,7 @@ alias aq='sudo apt upgrade'
 alias dk='docker'
 alias dg='dig +short myip.opendns.com @resolver1.opendns.com'
 alias c='clear'
+alias ll='ls -lchrt --color=auto'
 
 # File Navigation
 alias dw='cd ~/Downloads'
@@ -119,3 +120,7 @@ if [ -f '/home/jamil-shaikh/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/jamil-shaikh/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jamil-shaikh/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# caraspace
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)

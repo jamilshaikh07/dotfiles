@@ -1,7 +1,7 @@
 # ZSH & Sarship
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="amuse"
-plugins=(zsh-autosuggestions zsh-syntax-highlighting helm )
+plugins=(zsh-autosuggestions zsh-syntax-highlighting helm git )
 
 # Load Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh

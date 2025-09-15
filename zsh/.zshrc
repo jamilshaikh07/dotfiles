@@ -1,4 +1,4 @@
-zmodload zsh/zprof
+# zmodload zsh/zprof
 
 # Top of .zshrc
 ZSH_DISABLE_COMPFIX=true
@@ -6,14 +6,15 @@ ZSH_AUTO_UPDATE=true
 
 # Smarter completion initialization
 autoload -Uz compinit
-if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
-    compinit
-else
-    compinit -C
-fi
+compinit -u
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.cache/zsh
 
 # ZSH & Starship
-plugins=( git zsh-autosuggestions zsh-syntax-highlighting )
+# plugins=( git zsh-autosuggestions zsh-syntax-highlighting )
+# plugins=( git zsh-autosuggestions fast-syntax-highlighting )
+plugins=( git zsh-autosuggestions )
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""
 # Load Oh-My-Zsh
@@ -137,4 +138,4 @@ source <(fzf --zsh)
 
 
 # debuging speed
-zprof
+# zprof

@@ -1,11 +1,23 @@
-# ZSH & Sarship
+zmodload zsh/zprof
+
+# Top of .zshrc
+ZSH_DISABLE_COMPFIX=true
+ZSH_AUTO_UPDATE=true
+
+# Smarter completion initialization
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+    compinit
+else
+    compinit -C
+fi
+
+# ZSH & Starship
+plugins=( git zsh-autosuggestions zsh-syntax-highlighting )
 export ZSH="$HOME/.oh-my-zsh"
-# ZSH_THEME="amuse"
 ZSH_THEME=""
-plugins=(zsh-autosuggestions zsh-syntax-highlighting helm git )
 # Load Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
-
 # Load Starship
 eval "$(starship init zsh)"
 
@@ -81,7 +93,6 @@ setopt ignore_eof
 export IGNOREEOF=10
 
 # GCP & Cloud
-alias gcli='gcloud'
 alias bpro="gcloud config configurations activate prod-config && gcloud auth application-default set-quota-project getbeamer"
 alias bstg="gcloud config configurations activate stg-config && gcloud auth application-default set-quota-project beamer-staging"
 
@@ -100,14 +111,13 @@ ssh-add ~/.ssh/jamilshaikh07-github > /dev/null 2>&1
 eval "$(direnv hook zsh)"
 
 # Path Updates
-export PATH=$HOME/.local/bin:$PATH
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+# export PATH=$HOME/.local/bin:$PATH
+# export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # setting control+u to clear the line from the cursor to the beginning of the line
 bindkey "^u" backward-kill-line
@@ -120,22 +130,11 @@ source <(carapace _carapace)
 if [ -f '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-# if [ -f '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc'; fi
 
 # fzf for Control+R and completion
 source <(fzf --zsh)
 
-# vi mode in zsh
-# bindkey -v
-# export KEYTIMEOUT=40
-# bindkey -M viins 'jj' vi-cmd-mode
-# # Backspace in insert mode
-# bindkey -M viins '^?' backward-delete-char
-# bindkey -M viins '^H' backward-delete-char
-#
-# # Alt+Backspace variants (tmux/kitty send either ESC+DEL or ESC+BS)
-# bindkey -M viins '\e^?' backward-kill-word   # ESC + DEL
-# bindkey -M viins '\e\b' backward-kill-word   # ESC + Backspace (^H)
-#
-# # Optional: make word-deletes stop at path slashes (nice for shells)
-# WORDCHARS=${WORDCHARS:s:/:}
+
+# debuging speed
+zprof

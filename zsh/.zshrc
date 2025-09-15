@@ -14,7 +14,7 @@ zstyle ':completion:*' cache-path ~/.cache/zsh
 # ZSH & Starship
 # plugins=( git zsh-autosuggestions zsh-syntax-highlighting )
 # plugins=( git zsh-autosuggestions fast-syntax-highlighting )
-plugins=( git zsh-autosuggestions )
+plugins=( git kubectl zsh-autosuggestions )
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""
 # Load Oh-My-Zsh
@@ -124,8 +124,8 @@ eval "$(direnv hook zsh)"
 bindkey "^u" backward-kill-line
 
 # # caraspace
-# zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-# source <(carapace _carapace)
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc'; fi

@@ -131,7 +131,7 @@ source <(carapace _carapace)
 if [ -f '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc'; fi
+# if [ -f '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc'; fi
 
 # fzf for Control+R and completion
 source <(fzf --zsh)

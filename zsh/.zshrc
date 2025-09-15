@@ -127,3 +127,8 @@ if [ -f '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc' ]; then . '/hom
 
 # fzf for Control+R and completion
 source <(fzf --zsh)
+
+# vi mode in zsh
+bindkey -v
+export KEYTIMEOUT=20
+bindkey -M viins 'jj' vi-cmd-mode

@@ -1,8 +1,8 @@
 # ZSH & Sarship
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="amuse"
+# ZSH_THEME="amuse"
+ZSH_THEME=""
 plugins=(zsh-autosuggestions zsh-syntax-highlighting helm git )
-
 # Load Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -108,9 +108,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# GCloud
-if [ -f '/home/jamil-shaikh/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jamil-shaikh/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/home/jamil-shaikh/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jamil-shaikh/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 # setting control+u to clear the line from the cursor to the beginning of the line
 bindkey "^u" backward-kill-line
@@ -123,12 +120,22 @@ source <(carapace _carapace)
 if [ -f '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc'; fi
+# if [ -f '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/completion.zsh.inc'; fi
 
 # fzf for Control+R and completion
 source <(fzf --zsh)
 
 # vi mode in zsh
 bindkey -v
-export KEYTIMEOUT=20
+export KEYTIMEOUT=40
 bindkey -M viins 'jj' vi-cmd-mode
+# Backspace in insert mode
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
+
+# Alt+Backspace variants (tmux/kitty send either ESC+DEL or ESC+BS)
+bindkey -M viins '\e^?' backward-kill-word   # ESC + DEL
+bindkey -M viins '\e\b' backward-kill-word   # ESC + Backspace (^H)
+
+# Optional: make word-deletes stop at path slashes (nice for shells)
+WORDCHARS=${WORDCHARS:s:/:}

@@ -126,16 +126,16 @@ if [ -f '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jami
 source <(fzf --zsh)
 
 # vi mode in zsh
-bindkey -v
-export KEYTIMEOUT=40
-bindkey -M viins 'jj' vi-cmd-mode
-# Backspace in insert mode
-bindkey -M viins '^?' backward-delete-char
-bindkey -M viins '^H' backward-delete-char
-
-# Alt+Backspace variants (tmux/kitty send either ESC+DEL or ESC+BS)
-bindkey -M viins '\e^?' backward-kill-word   # ESC + DEL
-bindkey -M viins '\e\b' backward-kill-word   # ESC + Backspace (^H)
-
-# Optional: make word-deletes stop at path slashes (nice for shells)
-WORDCHARS=${WORDCHARS:s:/:}
+# bindkey -v
+# export KEYTIMEOUT=40
+# bindkey -M viins 'jj' vi-cmd-mode
+# # Backspace in insert mode
+# bindkey -M viins '^?' backward-delete-char
+# bindkey -M viins '^H' backward-delete-char
+#
+# # Alt+Backspace variants (tmux/kitty send either ESC+DEL or ESC+BS)
+# bindkey -M viins '\e^?' backward-kill-word   # ESC + DEL
+# bindkey -M viins '\e\b' backward-kill-word   # ESC + Backspace (^H)
+#
+# # Optional: make word-deletes stop at path slashes (nice for shells)
+# WORDCHARS=${WORDCHARS:s:/:}

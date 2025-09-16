@@ -111,11 +111,7 @@ ssh-add ~/.ssh/jamilshaikh07-github > /dev/null 2>&1
 # Enable direnv
 eval "$(direnv hook zsh)"
 
-# Path Updates
-# export PATH=$HOME/.local/bin:$PATH
-# export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-
-# NVM
+# # NVM
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"

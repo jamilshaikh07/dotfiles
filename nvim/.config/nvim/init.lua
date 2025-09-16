@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHo
 -- yank to clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 
--- nvim-comment
+-- Comment toggle
 vim.keymap.set({ "n", "v" }, "<leader>/", ":CommentToggle<cr>")
 
 -- Install lazy.nvim (Plugin Manager)
@@ -37,182 +37,28 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 -- Plugins
-require("lazy").setup({
-  -- Navigation
-  { "nvim-telescope/telescope.nvim",             dependencies = { "nvim-lua/plenary.nvim" } },
-  { "nvim-telescope/telescope-file-browser.nvim" }, -- File browser
-  { "windwp/nvim-autopairs" },                      -- Autopairs plugin
-  -- File tree
+require("lazy").setup({$1
+  -- Copilot Chat (adds chat panel without changing your Copilot engine)
   {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    requires = {
-      "nvim-tree/nvim-web-devicons",
-    },
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("nvim-tree").setup {
-        disable_netrw = true,
-        view = {
-          width = 30,
-        },
-      }
+      local chat = require("CopilotChat")
+      chat.setup({
+        context = "buffers", -- use all open buffers by default
+      })
+      -- Keys similar to VS Code feel
+      vim.keymap.set("n", "<leader>cc", function() chat.toggle() end, { desc = "CopilotChat - Toggle" })
+      vim.keymap.set({"n","v"}, "<leader>ca", function() chat.ask() end, { desc = "CopilotChat - Ask (with selection)" })
+      vim.keymap.set("n", "<leader>cr", function() chat.reset() end, { desc = "CopilotChat - Reset" })
+      vim.keymap.set("n", "<leader>ch", function() chat.help() end, { desc = "CopilotChat - Help" })
     end,
   },
-  {
-    "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
-    cmd = "Trouble",
-    keys = {
-      {
-        "<leader>xx",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
-      },
-      {
-        "<leader>xX",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-        desc = "Buffer Diagnostics (Trouble)",
-      },
-      {
-        "<leader>cs",
-        "<cmd>Trouble symbols toggle focus=false<cr>",
-        desc = "Symbols (Trouble)",
-      },
-      {
-        "<leader>cl",
-        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-        desc = "LSP Definitions / references / ... (Trouble)",
-      },
-      {
-        "<leader>xL",
-        "<cmd>Trouble loclist toggle<cr>",
-        desc = "Location List (Trouble)",
-      },
-      {
-        "<leader>xQ",
-        "<cmd>Trouble qflist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
-      },
-    },
-  },
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    --- type Flash.Config
-    opts = {},
-    -- stylua: ignore
-    keys = {
-      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-    },
-  },
-
-  -- LSP & Code Assistance
-  { "neovim/nvim-lspconfig" },
-  {
-    "folke/ts-comments.nvim",
-    opts = {},
-    event = "VeryLazy",
-    enabled = vim.fn.has("nvim-0.10.0") == 1,
-  },
-  { "williamboman/mason.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
-  { "hrsh7th/nvim-cmp",                 dependencies = { "hrsh7th/cmp-nvim-lsp" } }, -- Autocomplete
-  { "github/copilot.vim" },                                                          -- AI-powered coding
-  { "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate" },
-  { "jose-elias-alvarez/null-ls.nvim" },                                             -- Linting & Formatting
-  -- {
-  --   "yetone/avante.nvim",
-  --   event = "VeryLazy",
-  --   version = false, -- Never set this value to "*"! Never!
-  --   opts = {
-  --     -- add any opts here
-  --     -- for example
-  --   },
-  --   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  --   build = "make",
-  --   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-  --   dependencies = {
-  --     "nvim-treesitter/nvim-treesitter",
-  --     "stevearc/dressing.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "MunifTanjim/nui.nvim",
-  --     --- The below dependencies are optional,
-  --     "echasnovski/mini.pick",         -- for file_selector provider mini.pick
-  --     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-  --     "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-  --     "ibhagwan/fzf-lua",              -- for file_selector provider fzf
-  --     "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-  --     "zbirenbaum/copilot.lua",        -- for providers='copilot'
-  --     {
-  --       -- support for image pasting
-  --       "HakonHarnes/img-clip.nvim",
-  --       event = "VeryLazy",
-  --       opts = {
-  --         -- recommended settings
-  --         default = {
-  --           embed_image_as_base64 = false,
-  --           prompt_for_file_name = false,
-  --           drag_and_drop = {
-  --             insert_mode = true,
-  --           },
-  --           -- required for Windows users
-  --           use_absolute_path = true,
-  --         },
-  --       },
-  --     },
-  --     {
-  --       -- Make sure to set this up properly if you have lazy=true
-  --       'MeanderingProgrammer/render-markdown.nvim',
-  --       opts = {
-  --         file_types = { "markdown", "Avante" },
-  --       },
-  --       ft = { "markdown", "Avante" },
-  --     },
-  --   },
-  -- },
-
-  -- Git & Buffers
-  { "lewis6991/gitsigns.nvim" },
-  { "akinsho/bufferline.nvim" },
-  { "tpope/vim-fugitive" }, -- Git commands
-
-  -- UI Enhancements
-  { "nvim-lualine/lualine.nvim" },
-  { "nvim-tree/nvim-web-devicons" }, -- Icons for Tree and Bufferline
-  { "folke/tokyonight.nvim" },
-  { "Mofiqul/vscode.nvim" },
-  { "Skardyy/makurai-nvim" },
-  { "ofseed/copilot-status.nvim" },
-  { "arturgoms/moonbow.nvim" },
-  -- Save and load buffers (a session) automatically for each folder
-  {
-    'rmagatti/auto-session',
-    config = function()
-      require("auto-session").setup {
-        log_level = "error",
-        auto_session_suppress_dirs = { "~/", "~/Downloads" },
-      }
-    end
-  },
-  -- Comment code
-  {
-    'terrortylor/nvim-comment',
-    config = function()
-      require("nvim_comment").setup()
-    end
-  }
 })
 
 -- Theme
 vim.cmd("colorscheme vscode")
--- vim.cmd("colorscheme moonbow")
 
 -- tree
 vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<cr>")
@@ -246,14 +92,14 @@ require("lualine").setup({
     lualine_x = { "copilot" },
     lualine_y = { "filetype", "progress" },
   },
-  -- extensions = { "oil" }
 })
 
 -- LSP & Autocompletion
 require("mason").setup()
-require("mason-lspconfig").setup({ 
-	ensure_installed = { "lua_ls", "yamlls", "jsonls", "terraformls", "bashls" },
+require("mason-lspconfig").setup({
+  ensure_installed = { "lua_ls", "yamlls", "jsonls", "terraformls", "bashls" },
 })
+
 -- Configure Installed LSPs
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup {}
@@ -315,7 +161,6 @@ npairs.setup({
 -- Telescope (File Searcher like Ctrl+P in VS Code)
 local telescope = require("telescope")
 telescope.load_extension("file_browser")
--- vim.keymap.set("n", "<leader>e", ":Telescope file_browser<CR>", { silent = true })
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { silent = true })
 vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", { silent = true })
 vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", { silent = true })
@@ -340,20 +185,18 @@ end
 require('telescope').setup {
   pickers = {
     marks = {
-      theme = "dropdown", -- Optional, can use "ivy" or "cursor" theme
+      theme = "dropdown",
     },
   },
 }
 
 vim.keymap.set("n", "<leader>fm", ":Telescope marks<CR>", { noremap = true, silent = true })
 
-
 -- Git Integration (Shows "dot" for changed files like VS Code)
 require("gitsigns").setup(
   {
     current_line_blame = true,
     vim.keymap.set("n", "<leader>gs", ":Git status<CR>", { silent = true }),
-    -- vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", { silent = true }),
   }
 )
 
@@ -363,14 +206,13 @@ vim.keymap.set("n", "<C-s>", ":w<CR>", { silent = true })
 -- GitHub Copilot (Enable Copilot)
 vim.g.copilot_enabled = true
 vim.g.copilot_filetypes = { "terraform", "python", "bash", "sh", "hcl", "yaml" }
--- vim.keymap.set("i", "<C-l>", "copilot#Accept('<CR>')", { expr = true, silent = true })
 vim.api.nvim_set_keymap("i", "<C-l>", "copilot#Accept('<CR>')", { expr = true, silent = true })
 
--- Formatter (Prettier)
+-- Formatter / Linting via none-ls (module name is 'null-ls')
 local null_ls = require("null-ls")
 null_ls.setup({
   sources = {
-    null_ls.builtins.formatting.prettier,            -- JSON/YAML auto-formatting
+    null_ls.builtins.formatting.prettier,            -- JSON/YAML/JS formatting
     null_ls.builtins.formatting.stylua,              -- Lua formatting
     null_ls.builtins.diagnostics.shellcheck,         -- Shell script linting
     null_ls.builtins.diagnostics.terraform_validate, -- Terraform validation
@@ -387,36 +229,20 @@ vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true })   
 vim.keymap.set("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", { silent = true }) -- Go to tab 1
 vim.keymap.set("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", { silent = true }) -- Go to tab 2
 
--- Set font
+-- Set font (only applies to GUIs like neovide/ goneovim)
 vim.cmd("set guifont=FiraCode\\ Nerd\\ Font:h10")
 
--- Set background color
--- vim.cmd("set background=dark")
-vim.o.background = "dark"  -- Set background to dark
+-- Dark background
+vim.o.background = "dark"
 
-vim.opt.tabstop = 2        -- Number of spaces that a <Tab> in the file counts for
-vim.opt.shiftwidth = 2     -- Size of an indent
-vim.opt.expandtab = true   -- Use spaces instead of tabs
-vim.opt.number = true      -- Show line numbers
-vim.opt.cursorline = true  -- Highlight current line
-vim.opt.wrap = true        -- Wrap lines
-vim.opt.autoindent = true  -- Copy indent from current line when starting a new line
-vim.opt.smartindent = true -- Do smart autoindenting when starting a new line
+-- Indentation & formatting basics
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.cursorline = true
+vim.opt.wrap = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
 
 -- Icons for Bufferline and Tree
-require("nvim-web-devicons").setup() -- Ensure icons are enabled
-
--- no highlighting after search
-vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { silent = true })
-
--- treesitter config for terraform python
-require("nvim-treesitter.configs").setup({
-  ensure_installed = { "lua", "python", "terraform", "go", "markdown", "bash" }, -- List of parsers to install
-  highlight = {
-    enable = true,                                                               -- Enable highlighting
-    additional_vim_regex_highlighting = false,
-  },
-  indent = {
-    enable = true, -- Enable indentation
-  },
-})
+require("nvim-web-devicons").setup()

@@ -129,7 +129,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -239,7 +239,7 @@ bindsym $mod+Shift+Tab workspace prev
 
 # cycle focus through tabbed layout in single workspace
 bindsym $mod+s focus right
-bindsym $mod+Shift+s focus left
+bindsym $mod+a focus left
 
 
 # print screen
@@ -274,3 +274,6 @@ assign [class="Slack"]          5
 
 # Bluetooth toggle profile
 bindsym $mod+b exec --no-startup-id ~/.config/i3/toggle_bluetooth.sh
+
+# swap caps lock as additional super
+exec_always --no-startup-id "setxkbmap -option caps:super"

@@ -119,9 +119,9 @@ eval "$(direnv hook zsh)"
 # setting control+u to clear the line from the cursor to the beginning of the line
 bindkey "^u" backward-kill-line
 
-# # caraspace
-zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-source <(carapace _carapace)
+# # # caraspace
+# zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+# source <(carapace _carapace)
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jamil-shaikh/google-cloud-sdk/path.zsh.inc'; fi

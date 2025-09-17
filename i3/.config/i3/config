@@ -264,11 +264,11 @@ gaps outer 1px
 
 # For startup script
 # send new windows to fixed workspaces
-assign [class="kitty"]          1
-assign [class="ChromePersonal"] 2
-assign [class="Code"]           3
-assign [class="ChromeOffice"]   4
-assign [class="Slack"]          5
+# assign [class="kitty"]          1
+# assign [class="ChromePersonal"] 2
+# assign [class="Code"]           3
+# assign [class="ChromeOffice"]   4
+# assign [class="Slack"]          5
 # (optional) WhatsApp app window if you use it:
 # assign [class="whatsapp"]    6
 

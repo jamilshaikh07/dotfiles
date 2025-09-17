@@ -105,8 +105,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # move workspace to output
-bindsym $mod+Shift+o move workspace to output right
-bindsym $mod+Shift+i move workspace to output left
+bindsym $mod+Mod1+h move workspace to output right
+bindsym $mod+Mod1+l move workspace to output left
 
 # split in horizontal orientation
 # bindsym $mod+h split h
@@ -234,18 +234,22 @@ bindsym $mod+q exec nemo
 # bindsym $mod+q exec nautilus
 
 # cycle through workspaces
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
+# bindsym $mod+Tab workspace next
+# bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+s workspace next
+bindsym $mod+a workspace prev
 
 # cycle focus through tabbed layout in single workspace
-bindsym $mod+s focus right
-bindsym $mod+a focus left
-
+# bindsym $mod+s focus right
+# bindsym $mod+a focus left
+bindsym $mod+Tab focus right
+bindsym $mod+Shift+Tab focus left
+focus_wrapping workspace
 
 # print screen
 bindsym --release Print exec --no-startup-id flameshot gui
 bindsym $mod+Shift+x exec --no-startup-id flameshot gui
-bindsym $mod+Shift+P exec --no-startup-id flameshot full -p ~/Pictures/Screenshots
+# bindsym $mod+Shift+P exec --no-startup-id flameshot full -p ~/Pictures/Screenshots
 
 ## Calendar
 # open calendar
@@ -262,18 +266,18 @@ gaps outer 1px
 # Enable "smart gaps": disable gaps when only one window is open
 # smart_gaps on
 
-# For startup script
-# send new windows to fixed workspaces
-# assign [class="kitty"]          1
-# assign [class="ChromePersonal"] 2
-# assign [class="Code"]           3
-# assign [class="ChromeOffice"]   4
-# assign [class="Slack"]          5
-# (optional) WhatsApp app window if you use it:
-# assign [class="whatsapp"]    6
-
 # Bluetooth toggle profile
 bindsym $mod+b exec --no-startup-id ~/.config/i3/toggle_bluetooth.sh
 
 # swap caps lock as additional super
 exec_always --no-startup-id "setxkbmap -option caps:super"
+
+# mark the current window
+bindsym $mod+Shift+i mark mark1
+bindsym $mod+Shift+o mark mark2
+bindsym $mod+Shift+p mark mark3
+# jump to the marked window
+bindsym $mod+i [con_mark="mark1"] focus
+bindsym $mod+o [con_mark="mark2"] focus
+bindsym $mod+p [con_mark="mark3"] focus
+

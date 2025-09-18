@@ -135,3 +135,5 @@ source <(fzf --zsh)
 
 # debuging speed
 # zprof
+source /home/jamil-shaikh/workspace/acquia/teleport-tool/aliases
+export TELEPORT_ADD_KEYS_TO_AGENT=no

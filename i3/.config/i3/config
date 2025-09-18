@@ -236,7 +236,7 @@ bindsym $mod+q exec nemo
 # cycle through workspaces
 bindsym $mod+l workspace next
 bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+h workspace prev
 
 # cycle focus through tabbed layout in single workspace

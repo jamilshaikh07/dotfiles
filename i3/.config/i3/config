@@ -242,7 +242,7 @@ bindsym $mod+Shift+Tab workspace prev
 # cycle focus through tabbed layout in single workspace
 bindsym $mod+s focus right
 bindsym $mod+a focus left
-focus_wrapping workspace
+# focus_wrapping workspace
 
 # print screen
 bindsym --release Print exec --no-startup-id flameshot gui

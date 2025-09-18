@@ -279,3 +279,6 @@ bindsym $mod+i [con_mark="mark1"] focus
 bindsym $mod+o [con_mark="mark2"] focus
 bindsym $mod+p [con_mark="mark3"] focus
 
+# don’t automatically switch workspace when a window is urgent
+focus_on_window_activation none
+

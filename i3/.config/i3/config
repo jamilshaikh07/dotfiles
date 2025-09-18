@@ -81,10 +81,10 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-# bindsym $mod+h focus left
+bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
-# bindsym $mod+l focus right
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -234,10 +234,10 @@ bindsym $mod+q exec nemo
 # bindsym $mod+q exec nautilus
 
 # cycle through workspaces
-bindsym $mod+l workspace next
+# bindsym $mod+l workspace next
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
-bindsym $mod+h workspace prev
+# bindsym $mod+h workspace prev
 
 # cycle focus through tabbed layout in single workspace
 bindsym $mod+s focus right

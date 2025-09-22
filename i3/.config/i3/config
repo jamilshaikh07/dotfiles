@@ -234,10 +234,13 @@ bindsym $mod+q exec nemo
 # bindsym $mod+q exec nautilus
 
 # cycle through workspaces
-# bindsym $mod+l workspace next
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
-# bindsym $mod+h workspace prev
+# bindsym $mod+Tab workspace next
+# bindsym $mod+Shift+Tab workspace prev
+
+# Next workspace only on the current monitor
+bindsym $mod+Tab focus output current; workspace next_on_output
+# Previous workspace only on the current monitor
+bindsym $mod+Shift+Tab focus output current; workspace prev_on_output
 
 # cycle focus through tabbed layout in single workspace
 bindsym $mod+s focus right

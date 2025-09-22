@@ -105,8 +105,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # move workspace to output
-bindsym $mod+Shift+o move workspace to output right
-bindsym $mod+Shift+i move workspace to output left
+# bindsym $mod+Shift+o move workspace to output right
+# bindsym $mod+Shift+i move workspace to output left
+bindsym $mod+Shift+i move workspace to output HDMI-1
+bindsym $mod+Shift+o move workspace to output eDP-1
 
 # split in horizontal orientation
 # bindsym $mod+h split h
@@ -282,4 +284,7 @@ bindsym $mod+u [con_mark="mark2"] focus
 
 # don’t automatically switch workspace when a window is urgent
 focus_on_window_activation none
+
+# Disable focus following mouse
+focus_follows_mouse no
 

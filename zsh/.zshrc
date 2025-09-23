@@ -141,4 +141,4 @@ export TELEPORT_ADD_KEYS_TO_AGENT=no
 alias tss="tsh status"
 alias tsh-dev='tsh login --proxy=teleport.dev.cloudservices.acquia.io'
 alias tsh-prod='tsh login --proxy=us-east-1.teleport.cloudservices.acquia.io'
-
+alias tso='tsh logout'

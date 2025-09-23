@@ -31,7 +31,7 @@ markup=none
 # Teleport status
 [tsh]
 command=$HOME/.config/i3blocks/tsh_status.sh
-interval=10
+interval=5
 separator=true
 separator_block_width=15
 markup=pango
@@ -46,7 +46,7 @@ label=VOL
 #label=♪
 instance=Master
 #instance=PCM
-interval=5
+interval=1
 signal=10
 
 # Memory usage
@@ -103,6 +103,7 @@ interval=10
 
 [load_average]
 label=LOAD
+command=/usr/share/i3blocks/load_average -w 4.0 -c 5.0
 interval=10
 separator=true
 

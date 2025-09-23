@@ -194,10 +194,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym l resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym h resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -312,4 +312,10 @@ focus_on_window_activation none
 
 # Disable focus following mouse
 focus_follows_mouse no
+
+# Slack to scratchpad
+# Slack → always move to scratchpad when started
+for_window [class="Slack"] floating enable, resize set 1400 900, move position center, move scratchpad
+# Toggle Slack from scratchpad
+bindsym $mod+z [class="Slack"] scratchpad show
 

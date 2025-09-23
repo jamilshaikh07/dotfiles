@@ -18,7 +18,7 @@ bindsym $mod+Shift+m exec --no-startup-id ~/.config/i3/fahad_benq.sh
 bindsym $mod+m exec --no-startup-id xrandr --auto
 
 # wallpaper using feh
-exec --no-startup-id feh --bg-scale $HOME/Pictures/ubuntu-1.png
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/ubuntu-1.png
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.

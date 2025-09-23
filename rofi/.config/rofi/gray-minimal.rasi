@@ -1,0 +1,27 @@
+* {
+    background:       #2e2e2e;   /* dark gray */
+    foreground:       #e0e0e0;   /* light gray text */
+    selected-background: #4a4a4a; /* medium gray highlight */
+    selected-foreground: #ffffff; /* white text when selected */
+    border: 0;
+    padding: 6;
+    spacing: 4;
+}
+
+window {
+    transparency: "real";
+    width: 40%;
+    location: center;
+    border-radius: 6;
+    padding: 10;
+}
+
+mainbox {
+    spacing: 6;
+}
+
+listview {
+    spacing: 3;
+    scrollbar: false;
+}
+

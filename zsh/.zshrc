@@ -70,7 +70,6 @@ alias ic='cd ~/workspace/ic'
 alias dot='cd ~/dotfiles'
 alias beam="cd ~/workspace/beamer"
 alias wasd="cd ~/workspace/tfaz/homelab"
-alias tt="cd ~/workspace/tfaz"
 alias acq="cd ~/workspace/acquia"
 # Terraform , OpenTofu & Terragrunt
 alias tf='terraform'
@@ -139,3 +138,4 @@ source <(fzf --zsh)
 # Acquia Aliases
 source /home/jamil-shaikh/workspace/acquia/teleport-tool/aliases
 export TELEPORT_ADD_KEYS_TO_AGENT=no
+alias tss="tsh status"

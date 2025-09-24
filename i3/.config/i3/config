@@ -89,7 +89,7 @@ bindsym $mod+slash exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+h focus left
-bindsym $mod+j focus down
+# bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
@@ -322,4 +322,9 @@ focus_follows_mouse no
 for_window [class="Slack"] floating enable, resize set 1400 900, move position center, move scratchpad
 # Toggle Slack from scratchpad
 bindsym $mod+z [class="Slack"] scratchpad show
+
+# Move gedit to scratchpad automatically (floating + centered)
+for_window [class="Gedit"] floating enable, resize set 1200 800, move position center, move scratchpad
+# Toggle gedit scratchpad
+bindsym $mod+j [class="Gedit"] scratchpad show
 

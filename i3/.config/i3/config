@@ -317,14 +317,11 @@ focus_on_window_activation none
 # Disable focus following mouse
 focus_follows_mouse no
 
-# Slack to scratchpad
-# Slack → always move to scratchpad when started
-for_window [class="Slack"] floating enable, resize set 1400 900, move position center, move scratchpad
-# Toggle Slack from scratchpad
-bindsym $mod+z [class="Slack"] scratchpad show
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show, move position center, resize set 1400 900
 
-# Move gedit to scratchpad automatically (floating + centered)
-for_window [class="Gedit"] floating enable, resize set 1200 800, move position center, move scratchpad
-# Toggle gedit scratchpad
-bindsym $mod+j [class="Gedit"] scratchpad show
-
+# Show the second scratchpad window
+bindsym $mod+Shift+equal move scratchpad
+bindsym $mod+equal scratchpad show, move position center, resize set 1400 900

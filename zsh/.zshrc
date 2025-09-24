@@ -62,6 +62,7 @@ alias dk='docker'
 alias dg='dig +short myip.opendns.com @resolver1.opendns.com'
 alias c='clear'
 alias ll='ls -lchrt --color=auto'
+alias f='fzf'
 
 # File Navigation
 alias dw='cd ~/Downloads'

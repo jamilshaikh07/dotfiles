@@ -326,8 +326,8 @@ focus_follows_mouse no
 # bindsym $mod+Shift+equal move scratchpad
 # bindsym $mod+equal scratchpad show, move position center, resize set 1400 900
 for_window [class="Slack"] move scratchpad, mark sp_slack
-for_window [class="Gedit"] move scratchpad, mark sp_gedit
+for_window [class="obsidian"] move scratchpad, mark sp_obsidian
 
 bindsym $mod+minus [con_mark=sp_slack] scratchpad show, move position center, resize set 1400 900
-bindsym $mod+equal [con_mark=sp_gedit] scratchpad show, move position center, resize set 1400 900
+bindsym $mod+equal [con_mark=sp_obsidian] scratchpad show, move position center, resize set 1400 900
 

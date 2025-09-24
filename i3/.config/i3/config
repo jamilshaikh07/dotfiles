@@ -323,6 +323,6 @@ focus_follows_mouse no
 # Scratchpad for slack and obsidian
 for_window [class="Slack"] move scratchpad, mark sp_slack
 for_window [class="obsidian"] move scratchpad, mark sp_obsidian
-bindsym $mod+minus [con_mark=sp_slack] scratchpad show, move position center, resize set 1400 900
-bindsym $mod+equal [con_mark=sp_obsidian] scratchpad show, move position center, resize set 1400 900
+bindsym $mod+z [con_mark=sp_slack] scratchpad show, move position center, resize set 1400 900
+bindsym $mod+x [con_mark=sp_obsidian] scratchpad show, move position center, resize set 1400 900
 

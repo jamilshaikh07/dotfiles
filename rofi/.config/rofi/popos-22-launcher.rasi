@@ -1,0 +1,91 @@
+/* Pop!_OS 22.04 inspired rofi theme (fixed syntax) */
+
+* {
+  bg:            #20242C;     /* window background */
+  surface:       #2A2F3A;     /* list & entry background */
+  surface-alt:   #343A46;
+  text:          #E6E6E6;
+  text-dim:      #B7BEC9;
+  accent:        #48B9C7;     /* Pop teal */
+  highlight-bg:  #3A404C;
+  highlight-fg:  #FFFFFF;
+
+  border:        0px;
+  padding:       10px;
+  spacing:       8px;
+
+  font:          "JetBrains Mono 13";
+}
+
+window {
+  location: center;
+  width: 45%;
+  border-radius: 10px;
+  background-color: @bg;
+  padding: 16px;
+}
+
+mainbox {
+  spacing: 10px;
+  children: [ inputbar, listview ];
+}
+
+inputbar {
+  background-color: @surface;
+  border-radius: 8px;
+  padding: 10px 12px;
+  spacing: 8px;
+}
+
+prompt {
+  enabled: false;
+}
+
+entry {
+  placeholder: "Search apps…";
+  placeholder-color: @text-dim;
+  background-color: @surface;
+  expand: true;
+  padding: 2px 0px;
+  border-radius: 0px;
+  border-color: @accent;
+  border: 0px;
+  border-bottom: 2px;
+}
+
+textbox-prompt-colon { enabled: false; }
+
+listview {
+  background-color: transparent;
+  columns: 1;
+  lines: 10;
+  spacing: 6px;
+  scrollbar: false;
+  cycle: true;
+}
+
+element {
+  background-color: @surface;
+  text-color: @text;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+element-icon {
+  size: 22px;
+  margin: 0px 8px 0px 0px;
+}
+
+element selected {
+  background-color: @highlight-bg;
+  text-color: @highlight-fg;
+  border: 1px solid @accent;
+  border-radius: 8px;
+}
+
+element-text {
+  highlight: bold;
+}
+
+message { background-color: transparent; }
+

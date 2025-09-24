@@ -1,11 +1,11 @@
 configuration {
-    modi: "drun";
-    show-icons: false;
-    font: "JetBrains Mono 12";
-    lines: 8;
-    columns: 1;
-    matching: "fuzzy";
-    case-sensitive: false;
-    sort: true;
+  modi: "drun";
+  show-icons: true;                 /* set false for ultra-minimal */
+  font: "JetBrains Mono 13";
+  matching: "fuzzy";
+  case-sensitive: false;
+  sort: true;
+  drun-match-fields: "name,generic,exec,categories,keywords";
+  display-drun: "";
 }
 

@@ -119,7 +119,7 @@ interval=30
 # Date Time
 #
 [time]
-command=date '+%d-%m-%Y %H:%M:%S'
+command=date '+%a %d-%m-%Y %H:%M:%S'
 interval=5
 
 # Generic media player support
@@ -142,9 +142,9 @@ interval=5
 # Support multiple chips, though lm-sensors.
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
-[temperature]
-label=TEMP
-interval=10
+# [temperature]
+# label=TEMP
+# interval=10
 
 # Key indicators
 #

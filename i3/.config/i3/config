@@ -74,7 +74,8 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec kitty
 
 # kill focused window
-bindsym $mod+Shift+BackSpace kill
+bindsym $mod+Shift+q kill
+# bindsym $mod+Shift+BackSpace kill 
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
@@ -90,7 +91,7 @@ bindsym $mod+slash exec --no-startup-id rofi -show drun
 # change focus
 bindsym $mod+h focus left
 # bindsym $mod+j focus down
-bindsym $mod+k focus up
+# bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
@@ -100,15 +101,15 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+i move left
+# bindsym $mod+Shift+j move down
+# bindsym $mod+Shift+k move up
+bindsym $mod+o move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
+# bindsym $mod+Shift+Down move down
+# bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # move workspace to output
@@ -270,8 +271,10 @@ bindsym $mod+q exec nemo
 
 # Next workspace only on the current monitor
 bindsym $mod+Tab focus output current; workspace next_on_output
+bindsym $mod+Shift+l focus output current; workspace next_on_output
 # Previous workspace only on the current monitor
 bindsym $mod+Shift+Tab focus output current; workspace prev_on_output
+bindsym $mod+Shift+h focus output current; workspace prev_on_output
 
 # cycle focus through tabbed layout in single workspace
 bindsym $mod+s focus right
@@ -296,7 +299,7 @@ gaps inner 5px
 gaps outer 1px
 
 # Enable "smart gaps": disable gaps when only one window is open
-# smart_gaps on
+smart_gaps on
 
 # Bluetooth toggle profile
 bindsym $mod+b exec --no-startup-id ~/.config/i3/toggle_bluetooth.sh
@@ -317,17 +320,9 @@ focus_on_window_activation none
 # Disable focus following mouse
 focus_follows_mouse no
 
-# # Make the currently focused window a scratchpad
-# bindsym $mod+Shift+minus move scratchpad
-# # Show the first scratchpad window
-# bindsym $mod+minus scratchpad show, move position center, resize set 1400 900
-#
-# # Show the second scratchpad window
-# bindsym $mod+Shift+equal move scratchpad
-# bindsym $mod+equal scratchpad show, move position center, resize set 1400 900
+# Scratchpad for slack and obsidian
 for_window [class="Slack"] move scratchpad, mark sp_slack
 for_window [class="obsidian"] move scratchpad, mark sp_obsidian
-
 bindsym $mod+minus [con_mark=sp_slack] scratchpad show, move position center, resize set 1400 900
 bindsym $mod+equal [con_mark=sp_obsidian] scratchpad show, move position center, resize set 1400 900
 

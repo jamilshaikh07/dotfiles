@@ -326,3 +326,6 @@ for_window [class="obsidian"] move scratchpad, mark sp_obsidian
 bindsym $mod+z [con_mark=sp_slack] scratchpad show, move position center, resize set 1400 900
 bindsym $mod+x [con_mark=sp_obsidian] scratchpad show, move position center, resize set 1400 900
 
+# Send any application to the scratchpad
+bindsym $mod+Shift+minus mark --add sp_app; move scratchpad
+bindsym $mod+minus [con_mark="sp_app"] scratchpad show, move position center, resize set 1400 900

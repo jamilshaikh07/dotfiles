@@ -113,8 +113,10 @@ separator=true
 [battery]
 label=BAT
 #label=⚡
-#instance=1
 interval=30
+command=~/.config/i3blocks/i3battery BAT0
+separator=true
+
 
 # Date Time
 #

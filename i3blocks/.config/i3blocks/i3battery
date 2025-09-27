@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+BAT="${1:-BAT0}"
+BATPATH="/sys/class/power_supply/$BAT"
+
+if [ ! -d "$BATPATH" ]; then
+  echo "  —"
+  echo "—"
+  echo "#ff5555"
+  exit 0
+fi
+
+PERCENT=$(cat "$BATPATH/capacity")
+STATUS=$(cat "$BATPATH/status")
+
+# icon selection
+icon=""
+case $PERCENT in
+  9[0-9]|100) icon="";;
+  7[0-9]|8[0-9]) icon="";;
+  5[0-9]|6[0-9]) icon="";;
+  3[0-9]|4[0-9]) icon="";;
+  *) icon="";;
+esac
+
+# charging indicator
+if [[ "$STATUS" == "Charging" ]]; then
+  icon=" $icon"
+fi
+
+# full text
+echo "$icon  ${PERCENT}%"
+# short text
+echo "${PERCENT}%"
+
+# color output
+if [[ "$STATUS" == "Discharging" && $PERCENT -le 15 ]]; then
+  echo "#ff5555"   # red
+elif [[ "$STATUS" == "Discharging" && $PERCENT -le 30 ]]; then
+  echo "#f1fa8c"   # yellow
+else
+  echo "#a6e3a1"   # green
+fi
+

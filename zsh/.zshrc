@@ -49,6 +49,7 @@ alias kn='kubens'
 alias kres='kubectl get pods -A -o jsonpath="{range .items[*]}{.metadata.namespace}{\"\t\"}{.metadata.name}{\"\t\"}{range .status.containerStatuses[*]}{.name}{\"\t\"}{.restartCount}{\"\t\"}{.lastState.terminated.reason}{\"\n\"}{end}{end}" | awk '\''$4 > 0'\'' | column -t'
 alias kgao='kubectl get all -o wide'
 alias kpr='kubectl port-forward'
+alias kps='kubectl get pods --sort-by=.metadata.creationTimestamp'
 
 # ZSH Enhancements
 autoload -U colors && colors

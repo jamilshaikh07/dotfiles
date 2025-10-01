@@ -105,9 +105,9 @@ bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
-# bindsym $mod+Shift+j move down
-# bindsym $mod+Shift+k move up
+bindsym $mod+Shift+a move left
 bindsym $mod+Shift+l move right
+bindsym $mod+Shift+s move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -275,10 +275,8 @@ bindsym $mod+q exec nemo
 
 # Next workspace only on the current monitor
 bindsym $mod+Tab focus output current; workspace next_on_output
-bindsym $mod+Shift+s focus output current; workspace next_on_output
 # Previous workspace only on the current monitor
 bindsym $mod+Shift+Tab focus output current; workspace prev_on_output
-bindsym $mod+Shift+a focus output current; workspace prev_on_output
 
 # cycle focus through tabbed layout in single workspace
 bindsym $mod+s focus right

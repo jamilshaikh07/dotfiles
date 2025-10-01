@@ -226,6 +226,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3blocks -c ~/.config/i3blocks/config
         font pango:DejaVu Sans Mono 10
+        position top
         tray_output primary
         colors {
                 background #222222

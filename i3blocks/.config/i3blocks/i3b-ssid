@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Show current Wi-Fi SSID and signal (falls back gracefully)
+
+# 1) Try iwgetid (fast)
+ssid=$(iwgetid -r 2>/dev/null)
+
+# 2) Fallback to nmcli
+[ -z "$ssid" ] && ssid=$(nmcli -t -f ACTIVE,SSID dev wifi 2>/dev/null | awk -F: '$1=="yes"{print $2}')
+signal=$(nmcli -t -f ACTIVE,SIGNAL dev wifi 2>/dev/null | awk -F: '$1=="yes"{print $2}')
+
+if [ -z "$ssid" ]; then
+  echo "  —"
+  echo "—"
+  echo "#aaaaaa"
+  exit 0
+fi
+
+echo "  $ssid (${signal:-?}%)"   # full_text
+echo "$ssid"                     # short_text
+# color
+if [ "${signal:-0}" -ge 70 ]; then
+  echo "#a6e3a1"
+elif [ "${signal:-0}" -ge 40 ]; then
+  echo "#f1fa8c"
+else
+  echo "#ff5555"
+fi
+

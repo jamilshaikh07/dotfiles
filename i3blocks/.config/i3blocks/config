@@ -30,6 +30,7 @@ markup=none
 
 # Teleport status
 [tsh]
+label=TSH
 command=$HOME/.config/i3blocks/tsh_status.sh
 interval=5
 separator=true
@@ -42,8 +43,8 @@ markup=pango
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-label=VOL
-#label=♪
+# label=VOL
+label=♪
 instance=Master
 #instance=PCM
 interval=1
@@ -53,9 +54,10 @@ signal=10
 #
 # The type defaults to "mem" if the instance is not specified.
 [memory]
-label=MEM
+# label=MEM
+label=RAM
 separator=true
-interval=30
+interval=5
 
 # [memory]
 # label=SWAP
@@ -69,7 +71,7 @@ interval=30
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
-label=HOME
+label=DSK
 #instance=/mnt/data
 interval=30
 
@@ -82,10 +84,6 @@ interval=30
 color=#00FF00
 interval=10
 separator=true
-
-[wifi]
-#instance=wlp3s0
-interval=10
 
 # [bandwidth]
 # #instance=eth0
@@ -105,7 +103,16 @@ interval=10
 label=LOAD
 command=/usr/share/i3blocks/load_average -w 4.0 -c 5.0
 interval=10
-separator=true
+# separator=true
+
+# Temperature
+#
+# Support multiple chips, though lm-sensors.
+# The script may be called with -w and -c switches to specify thresholds,
+# see the script for details.
+[temperature]
+label=🌡
+interval=10
 
 # Battery indicator
 #
@@ -117,12 +124,32 @@ interval=30
 command=~/.config/i3blocks/i3battery BAT0
 separator=true
 
+[wifi]
+instance=wlp3s0
+interval=10
+command=$HOME/.config/i3blocks/i3b-ssid
+separator=true
+
+[bt-profile]
+command=pactl list cards | awk -F: '/Active Profile/ {gsub(/^[ \t]+/,"",$2); print " " $2; exit}'
+interval=5
+
+# [calendar]
+# command=$HOME/.config/i3blocks/calendar
+# interval=1
+# LABEL= 
+# DATEFMT=+%a %d-%m-%Y
+# # SHORTFMT=+%H:%M:%S
+# HEIGHT=180
+# WIDTH=220
 
 # Date Time
 #
 [time]
-command=date '+%a %d-%m-%Y %H:%M:%S'
+command=date '+%a %d %b %H:%M:%S'
+label=🕒
 interval=5
+
 
 # Generic media player support
 #
@@ -139,14 +166,6 @@ interval=5
 #[openvpn]
 #interval=20
 
-# Temperature
-#
-# Support multiple chips, though lm-sensors.
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-# [temperature]
-# label=TEMP
-# interval=10
 
 # Key indicators
 #

@@ -134,22 +134,12 @@ separator=true
 command=pactl list cards | awk -F: '/Active Profile/ {gsub(/^[ \t]+/,"",$2); print " " $2; exit}'
 interval=5
 
-# [calendar]
-# command=$HOME/.config/i3blocks/calendar
-# interval=1
-# LABEL= 
-# DATEFMT=+%a %d-%m-%Y
-# # SHORTFMT=+%H:%M:%S
-# HEIGHT=180
-# WIDTH=220
-
 # Date Time
 #
 [time]
 command=date '+%a %d %b %H:%M:%S'
 label=🕒
 interval=5
-
 
 # Generic media player support
 #

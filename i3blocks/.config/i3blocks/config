@@ -130,16 +130,20 @@ interval=10
 command=$HOME/.config/i3blocks/i3b-ssid
 separator=true
 
-[bt-profile]
-command=pactl list cards | awk -F: '/Active Profile/ {gsub(/^[ \t]+/,"",$2); print " " $2; exit}'
-interval=5
+# [bt-profile]
+# command=pactl list cards | awk -F: '/Active Profile/ {gsub(/^[ \t]+/,"",$2); print " " $2; exit}'
+# interval=5
+
+# Calendar
+# [calendar]
+# command=$HOME/.config/i3blocks/calendar -f "+%a %d-%m-%Y %H:%M:%S" -s "+%H:%M"
+# interval=1
 
 # Date Time
 #
 [time]
 command=date '+%a %d %b %H:%M:%S'
-label=🕒
-interval=5
+interval=1
 
 # Generic media player support
 #

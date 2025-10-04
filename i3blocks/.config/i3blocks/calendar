@@ -1,64 +1,58 @@
-#! /bin/sh
+#!/usr/bin/env bash
+# i3blocks calendar with click-to-toggle YAD popup near the mouse
+# deps: yad, xdotool
 
-WIDTH=${WIDTH:-200}
-HEIGHT=${HEIGHT:-200}
-DATEFMT=${DATEFMT:-"+%a %d.%m.%Y %H:%M:%S"}
-SHORTFMT=${SHORTFMT:-"+%H:%M:%S"}
+set -u
 
-OPTIND=1
-while getopts ":f:W:H:" opt; do
-    case $opt in
-        f) DATEFMT="$OPTARG" ;;
-        W) WIDTH="$OPTARG" ;;
-        H) HEIGHT="$OPTARG" ;;
-        \?)
-            echo "Invalid option: -$OPTARG" >&2
-            exit 1
-            ;;
-        :)
-            echo "Option -$OPTARG requires an argument." >&2
-            exit 1
-            ;;
-    esac
-done
+LABEL="${LABEL:- }"
+DATEFMT="${DATEFMT:-+%a %d-%m-%Y %H:%M:%S}"
+SHORTFMT="${SHORTFMT:-+%H:%M}"
+WIDTH="${WIDTH:-260}"
+HEIGHT="${HEIGHT:-230}"
+CLASS="I3CalPopup-${USER}"
 
-/* case "$BLOCK_BUTTON" in */
-/*   1|2|3)  */
-/*  */
-/* 	# the position of the upper left corner of the popup */
-/* 	posX=$(($BLOCK_X - $WIDTH / 2)) */
-/* 	posY=$(($BLOCK_Y - $HEIGHT)) */
-/*  */
-/* 	i3-msg -q "exec yad --calendar \ */
-/*         --width=$WIDTH --height=$HEIGHT \ */
-/* 	    --undecorated --fixed \ */
-/* 	    --close-on-unfocus --no-buttons \ */
-/* 	    --posx=$posX --posy=$posY \ */
-/* 	    > /dev/null" */
-/* esac */
-case "$BLOCK_BUTTON" in
-  1|2|3)
-    # Defaults if i3blocks didn't pass coords (very old versions)
-    : "${BLOCK_X:=100}" "${BLOCK_Y:=100}"
+have_popup() { pgrep -f "yad --calendar .* --class=${CLASS}" >/dev/null 2>&1; }
+close_popup() { pkill -f "yad --calendar .* --class=${CLASS}" >/dev/null 2>&1 || true; }
 
-    # Center above the block, clamp to screen
-    posX=$(( BLOCK_X - WIDTH / 2 ))
-    posY=$(( BLOCK_Y - HEIGHT ))
-    [ $posX -lt 0 ] && posX=0
-    [ $posY -lt 0 ] && posY=0
+open_popup() {
+  # mouse position (falls back if xdotool missing)
+  if command -v xdotool >/dev/null 2>&1; then
+    eval "$(xdotool getmouselocation --shell 2>/dev/null)"
+    PX=$(( X - WIDTH / 2 ))
+    PY=$(( Y - HEIGHT - 10 ))
+  else
+    PX=100; PY=24
+  fi
 
-    # Close existing popup (same class)
-    pkill -f "yad --calendar .* --class=I3CalPopup" 2>/dev/null
+  # clamp to screen bounds of current X screen
+  SW=1920; SH=1080
+  if command -v xrandr >/dev/null 2>&1; then
+    read -r SW SH < <(xrandr --current | awk '/\*/{print $1; exit}' | awk -Fx '{print $1, $2}')
+  fi
+  (( PX < 0 )) && PX=0
+  (( PY < 0 )) && PY=0
+  (( PX + WIDTH > SW )) && PX=$(( SW - WIDTH ))
+  (( PY + HEIGHT > SH )) && PY=$(( SH - HEIGHT ))
 
-    i3-msg -q "exec --no-startup-id yad --calendar \
-      --class=I3CalPopup --skip-taskbar \
-      --width=$WIDTH --height=$HEIGHT \
-      --undecorated --fixed \
-      --close-on-unfocus --no-buttons \
-      --posx=$posX --posy=$posY \
-      >/dev/null 2>&1"
-  ;;
+  # launch detached; close on unfocus
+  setsid -f yad --calendar \
+    --class="${CLASS}" --skip-taskbar --on-top \
+    --undecorated --fixed --close-on-unfocus --no-buttons \
+    --width="${WIDTH}" --height="${HEIGHT}" \
+    --posx="${PX}" --posy="${PY}" >/dev/null 2>&1
+}
+
+case "${BLOCK_BUTTON:-0}" in
+  1) if have_popup; then close_popup; else open_popup; fi ;;
+  2) command -v gnome-calendar >/dev/null 2>&1 \
+        && setsid -f gnome-calendar >/dev/null 2>&1 \
+        || setsid -f xdg-open https://calendar.google.com >/dev/null 2>&1 ;;
+  3) close_popup ;;
 esac
 
-echo "$LABEL$(date "$DATEFMT")"
-echo "$LABEL$(date "$SHORTFMT")"
+# i3blocks lines
+printf "%s%s\n" "$LABEL" "$(date "$DATEFMT")"
+printf "%s%s\n" "$LABEL" "$(date "$SHORTFMT")"
+# weekend tint (optional)
+[ "$(date +%u)" -ge 6 ] && echo "#f1fa8c" || echo "#a6e3a1"
+

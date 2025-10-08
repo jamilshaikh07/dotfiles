@@ -146,3 +146,18 @@ alias tsh-prod='tsh login --proxy=us-east-1.teleport.cloudservices.acquia.io'
 alias tso='tsh logout'
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
+
+# UTC timezone calculator
+# Common format
+FMT='%Y-%m-%d %H:%M:%S %Z'
+
+# 1) Current UTC time
+alias utcnow='TZ=UTC date +"'"$FMT"'"'
+
+# (nice extra) Show both UTC and local for any expression
+when() {
+  local in="${*:-now}"
+  printf "UTC  : %s\n"   "$(TZ=UTC date -d "$in" +"'"$FMT"'")"
+  printf "Local: %s\n"   "$(date      -d "$in" +"'"$FMT"'")"
+}
+

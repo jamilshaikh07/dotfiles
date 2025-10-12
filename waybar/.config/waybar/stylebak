@@ -1,0 +1,74 @@
+/* ────────────────
+   Global aesthetic
+   ──────────────── */
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 14px;
+  color: #eaeaea;
+}
+
+window#waybar {
+  background-color: rgba(20, 20, 30, 0.9);
+  border: none;
+  border-radius: 12px;              /* round the corners */
+  margin: 6px 10px 0 10px;          /* space from screen edges */
+  padding: 4px 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);  /* soft shadow under bar */
+}
+
+/* Keep right-side modules tight */
+#custom-tsh, #cpu, #memory, #disk, #temperature,
+#clock, #network, #pulseaudio, #battery, #tray {
+  background: transparent;
+  padding: 0 10px;
+  margin: 0;
+}
+#tray { margin-right: 8px; }
+
+/* ────────────────
+   Workspaces
+   ──────────────── */
+#workspaces {
+  background: transparent;
+  margin: 0 4px;
+}
+
+#workspaces button {
+  padding: 2px 8px;
+  margin: 0px 1px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #d0d0d0;
+  transition: background 0.15s ease, color 0.15s ease;
+  box-shadow: none;
+  border: none;
+}
+
+#workspaces button.focused {
+  background-color: #33ccff;   /* cyan highlight */
+  color: #0f0f14;
+}
+
+#workspaces button.active {
+  background-color: #2a2a36;   /* subtle dark gray */
+  color: #ffffff;
+}
+
+#workspaces button.urgent {
+  background-color: #ff5555;
+  color: #0f0f14;
+}
+
+/* remove extra shadows / outlines */
+#workspaces button:hover {
+  background-color: #3a3a4a;
+  color: #fff;
+  box-shadow: none;
+}
+
+#custom-pomodoro {
+  color: #ff5555;
+}
+#custom-pomodoro.break {
+  color: #50fa7b;
+}

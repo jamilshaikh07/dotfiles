@@ -1,0 +1,59 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+
+  "modules-left":   ["hyprland/workspaces"],
+  "modules-center": [],
+  "modules-right":  ["custom/tsh","pulseaudio","cpu","memory","disk","temperature","custom/pomodoro","clock","network","battery","tray"],
+
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "disable-scroll": false,
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "pulseaudio": {
+    "format": " {volume}%",
+    "format-muted": "🔇",
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+  },
+
+
+  "custom/tsh": { "format": "TSH: {}", "exec": "~/.config/i3blocks/tsh_status.sh", "interval": 5 },
+  "cpu":        { "format": "CPU: {usage}%", "interval": 5 },
+  "memory":     { "format": "RAM: {used}G",  "interval": 5 },
+  "disk":       { "format": "DSK: {used}", "path": "/", "interval": 30 },
+  "temperature":{"critical-threshold": 80, "format": "🌡 {temperatureC}°C" },
+  "custom/pomodoro": {
+    "exec": "~/.config/waybar/scripts/pomodoro.sh",
+    "interval": 1,
+    "on-click": "~/.config/waybar/scripts/pomodoro.sh click-left",
+    "on-click-right": "~/.config/waybar/scripts/pomodoro.sh click-right",
+    "tooltip": "Left-click to start, right-click to stop"
+    },
+  "clock": {
+        	"format": "{:%a %d %H:%M:%S}",
+        	"rotate": 0,
+        	"format-alt": "{  %d·%m·%y}",
+        	"tooltip-format": "<span>{calendar}</span>",
+        	"calendar": {
+            		"mode": "month",
+            		"format": {
+                	    "months": "<span color='#ff6699'><b>{}</b></span>",
+                        "days": "<span color='#cdd6f4'><b>{}</b></span>",
+                	    "weekdays": "<span color='#7CD37C'><b>{}</b></span>",
+                	    "today": "<span color='#ffcc66'><b>{}</b></span>"
+            	}
+            }
+    },
+  "network":    { "format-wifi": "  {essid}", "format-ethernet": " {ifname}", "format-disconnected": "⚠ Disconnected", "tooltip-format": "{ipaddr}" },
+  "pulseaudio": { "format": "♪ {volume}%", "format-muted": "🔇", "on-click": "pavucontrol" },
+  "battery":    { "format": "{capacity}%", "format-charging": "⚡ {capacity}%", "interval": 30 },
+  "tray":       { "icon-size": 16, "spacing": 5 }
+}
+

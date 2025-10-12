@@ -1,0 +1,120 @@
+/* ────────────────
+   Global Aesthetic
+   ──────────────── */
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 12px;
+  color: #eaeaea;
+}
+
+window#waybar {
+  background-color: rgba(20, 20, 30, 0.9);
+  border: 1px solid rgba(60, 60, 70, 0.6);
+  border-radius: 12px;
+  margin: 6px 10px 0 10px;
+  padding: 4px 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+/* ────────────────
+   Module Layout
+   ──────────────── */
+#custom-tsh, #cpu, #memory, #disk, #temperature,
+#custom-pomodoro, #clock, #network, #pulseaudio,
+#battery, #bluetooth, #tray {
+  background: transparent;
+  padding: 0 10px;
+  margin: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* first module, remove left border */
+#custom-tsh:first-child {
+  border-left: none;
+}
+
+/* Optional: rounded glow effect on hover */
+#cpu:hover, #memory:hover, #disk:hover, #temperature:hover,
+#clock:hover, #network:hover, #pulseaudio:hover,
+#battery:hover, #bluetooth:hover, #custom-pomodoro:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+}
+
+/* ────────────────
+   Module Colors
+   ──────────────── */
+
+/* Accent color groups */
+#cpu { color: #89b4fa; }         /* blue */
+#memory { color: #f9e2af; }      /* yellow */
+#disk { color: #fab387; }        /* orange */
+#temperature { color: #94e2d5; } /* teal */
+#clock { color: #cba6f7; }       /* violet */
+#network { color: #89dceb; }     /* sky */
+#pulseaudio { color: #f38ba8; }  /* red-pink */
+#battery { color: #a6e3a1; }     /* green */
+#bluetooth { color: #74c7ec; }   /* light blue */
+
+/* Pomodoro states */
+#custom-pomodoro {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+#custom-pomodoro.break {
+  color: #50fa7b;
+}
+#custom-pomodoro.idle {
+  color: #cdd6f4;
+}
+
+/* ────────────────
+   Workspaces
+   ──────────────── */
+#workspaces {
+  background: transparent;
+  margin: 0 4px;
+}
+
+#workspaces button {
+  padding: 2px 6px;
+  margin: 0 1px;
+  border-radius: 6px;
+  background-color: #1e1e2e;
+  color: #d0d0d0;
+  border: 2px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#workspaces button.focused {
+  background-color: #33ccff;
+  color: #0f0f14;
+  font-weight: bold;
+  border: 2px solid rgba(255, 255, 255, 1.0);   /* pure white border */
+}
+
+#workspaces button.active {
+  background-color: #2a2a36;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.85);  /* white border */
+}
+
+#workspaces button.urgent {
+  background-color: #ff5555;
+  color: #0f0f14;
+  border: 2px solid #ff5555;
+}
+
+#workspaces button:hover {
+  background-color: #3a3a4a;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ────────────────
+   System Tray
+   ──────────────── */
+#tray {
+  margin-right: 6px;
+}
+

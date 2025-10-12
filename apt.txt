@@ -9,3 +9,7 @@ network-manager-gnome
 lxappearance
 x11-utils
 fzf
+waybar
+wofi
+swaylock
+

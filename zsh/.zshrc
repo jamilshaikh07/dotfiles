@@ -14,7 +14,7 @@ zstyle ':completion:*' cache-path ~/.cache/zsh
 # ZSH & Starship
 # plugins=( git zsh-autosuggestions zsh-syntax-highlighting )
 # plugins=( git zsh-autosuggestions fast-syntax-highlighting )
-plugins=( git kubectl zsh-autosuggestions )
+plugins=( git kubectl aws zsh-autosuggestions )
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""
 # Load Oh-My-Zsh

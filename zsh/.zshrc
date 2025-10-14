@@ -64,6 +64,9 @@ alias dg='dig +short myip.opendns.com @resolver1.opendns.com'
 alias c='clear'
 alias ll='ls -lchrt --color=auto'
 alias f='fzf'
+alias mat='cmatrix'
+alias psg='ps aux | grep -i'
+alias h='history'
 
 # File Navigation
 alias dw='cd ~/Downloads'

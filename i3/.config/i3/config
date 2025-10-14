@@ -78,11 +78,10 @@ set $term gnome-terminal
 bindsym $mod+Return exec $term
 
 # kill focused window
-bindsym $mod+Shift+q kill
-# bindsym $mod+Shift+BackSpace kill 
+bindsym $mod+Shift+BackSpace kill 
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+space exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -106,9 +105,7 @@ bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
-bindsym $mod+Shift+a move left
 bindsym $mod+Shift+l move right
-bindsym $mod+Shift+s move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -133,14 +130,14 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+t layout tabbed
+# bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 # bindsym $mod+Shift+a focus parent
@@ -165,35 +162,33 @@ set $ws10 "10"
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
+bindsym $mod+q workspace number $ws4
+bindsym $mod+w workspace number $ws5
+bindsym $mod+e workspace number $ws6
+bindsym $mod+z workspace number $ws7
+bindsym $mod+x workspace number $ws8
+bindsym $mod+c workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+q move container to workspace number $ws4
+bindsym $mod+Shift+w move container to workspace number $ws5
+bindsym $mod+Shift+e move container to workspace number $ws6
+bindsym $mod+Shift+z move container to workspace number $ws7
+bindsym $mod+Shift+x move container to workspace number $ws8
+bindsym $mod+Shift+c move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # mod + tiled ` for workspace back and forth
 bindsym $mod+grave workspace back_and_forth
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+4 reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -257,7 +252,8 @@ client.urgent           #ff5555    #222222    #ffffff  #ff5555   #ff5555
 
 # Suspend
 bindsym $mod+period exec i3lock -c 000000
-bindsym $mod+Shift+period exec systemctl suspend
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+period exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Thinkpad brightness
 # bindsym XF86MonBrightnessUp exec xbacklight -inc 10  # increase screen brightness
@@ -267,8 +263,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # open file manager
-bindsym $mod+q exec nemo
-# bindsym $mod+q exec nautilus
+bindsym $mod+u exec nemo
 
 # cycle through workspaces
 # bindsym $mod+Tab workspace next
@@ -279,19 +274,14 @@ bindsym $mod+Tab focus output current; workspace next_on_output
 # Previous workspace only on the current monitor
 bindsym $mod+Shift+Tab focus output current; workspace prev_on_output
 
-# cycle focus through tabbed layout in single workspace
-bindsym $mod+s focus right
-bindsym $mod+a focus left
-# focus_wrapping workspace
-
 # print screen
 bindsym --release Print exec --no-startup-id flameshot gui
-bindsym $mod+Shift+x exec --no-startup-id flameshot gui
+bindsym $mod+Shift+P exec --no-startup-id flameshot gui
 # bindsym $mod+Shift+P exec --no-startup-id flameshot full -p ~/Pictures/Screenshots
 
 ## Calendar
 # open calendar
-bindsym $mod+c exec --no-startup-id zenity --calendar
+bindsym $mod+Ctrl+c exec --no-startup-id zenity --calendar
 
 # padding for i3wm windows
 # Optional: disable titlebar borders for cleaner gaps
@@ -310,12 +300,12 @@ bindsym $mod+b exec --no-startup-id ~/.config/i3/toggle_bluetooth.sh
 # swap caps lock as additional super
 exec_always --no-startup-id "setxkbmap -option caps:super"
 
-# mark the current window
-bindsym $mod+Shift+y mark mark1
-bindsym $mod+Shift+u mark mark2
-# jump to the marked window
-bindsym $mod+y [con_mark="mark1"] focus
-bindsym $mod+u [con_mark="mark2"] focus
+# # mark the current window
+# bindsym $mod+Shift+y mark mark1
+# bindsym $mod+Shift+u mark mark2
+# # jump to the marked window
+# bindsym $mod+y [con_mark="mark1"] focus
+# bindsym $mod+u [con_mark="mark2"] focus
 
 # don’t automatically switch workspace when a window is urgent
 focus_on_window_activation none

@@ -38,7 +38,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Plugins
-require("lazy").setup({$1
+require("lazy").setup({
   -- Copilot Chat (adds chat panel without changing your Copilot engine)
   {
     "CopilotC-Nvim/CopilotChat.nvim",

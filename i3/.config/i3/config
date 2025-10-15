@@ -93,25 +93,27 @@ bindsym $mod+slash exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+h focus left
+bindsym $mod+Shift+Left focus left
 # bindsym $mod+j focus down
 # bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym $mod+Shift+Right focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# bindsym $mod+Left focus left
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
+# bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
+# bindsym $mod+Shift+Left move left
 # bindsym $mod+Shift+Down move down
 # bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# bindsym $mod+Shift+Right move right
 
 # move workspace to output
 # bindsym $mod+Shift+o move workspace to output right
@@ -293,6 +295,14 @@ bindsym $mod+u exec nemo
 bindsym $mod+Tab focus output current; workspace next_on_output
 # Previous workspace only on the current monitor
 bindsym $mod+Shift+Tab focus output current; workspace prev_on_output
+
+# Next workspace on all monitors using left right arrow keys
+bindsym $mod+Up workspace next
+bindsym $mod+Down workspace prev
+
+# Current monitor workspaces using up down arrow keys
+bindsym $mod+Left workspace prev_on_output
+bindsym $mod+Right workspace next_on_output
 
 # print screen
 bindsym --release Print exec --no-startup-id flameshot gui

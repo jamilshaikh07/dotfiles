@@ -24,6 +24,13 @@ bindsym $mod+Shift+n exec --no-startup-id dunstctl close-all
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+# start picom
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+
+# Grayscale toggle script
+bindsym $mod+Shift+g exec --no-startup-id ~/.config/i3/toggle-monitor-grayscale.sh
+bindsym $mod+g exec --no-startup-id ~/.config/i3/toggle-monitor-grayscale.sh
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the

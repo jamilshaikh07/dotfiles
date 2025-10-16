@@ -73,8 +73,10 @@ bindsym $mod+space exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+h focus left
+bindsym $mod+a focus left
 bindsym $mod+Shift+Left focus left
 bindsym $mod+l focus right
+bindsym $mod+s focus right
 bindsym $mod+Shift+Right focus right
 
 # move focused window
@@ -106,10 +108,9 @@ set $ws7 "7"
 set $ws8 "8"
 
 # switch to workspace
-bindsym $mod+q workspace number $ws3
-bindsym $mod+w workspace number $ws4
-bindsym $mod+a workspace number $ws5
-bindsym $mod+s workspace number $ws6
+bindsym $mod+q workspace number $ws4
+bindsym $mod+w workspace number $ws5
+bindsym $mod+e workspace number $ws6
 bindsym $mod+z workspace number $ws7
 bindsym $mod+x workspace number $ws8
 
@@ -123,10 +124,9 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 
 # move focused container to workspace
-bindsym $mod+Shift+q move container to workspace number $ws3
-bindsym $mod+Shift+w move container to workspace number $ws4
-bindsym $mod+Shift+a move container to workspace number $ws5
-bindsym $mod+Shift+s move container to workspace number $ws6
+bindsym $mod+Shift+q move container to workspace number $ws4
+bindsym $mod+Shift+w move container to workspace number $ws5
+bindsym $mod+Shift+e move container to workspace number $ws6
 
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -217,7 +217,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # open file manager
-bindsym $mod+e exec nemo
+bindsym $mod+u exec nemo
 
 # Next workspace only on the current monitor
 bindsym $mod+Tab focus output current; workspace next_on_output

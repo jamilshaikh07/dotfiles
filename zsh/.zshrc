@@ -76,6 +76,8 @@ alias dot='cd ~/dotfiles'
 alias beam="cd ~/workspace/beamer"
 alias wasd="cd ~/workspace/tfaz/homelab"
 alias acq="cd ~/workspace/acquia"
+alias is="/home/jamil-shaikh/workspace/acquia/is"
+
 # Terraform , OpenTofu & Terragrunt
 alias tf='terraform'
 alias tg='terragrunt'

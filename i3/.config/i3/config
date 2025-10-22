@@ -180,15 +180,47 @@ bar {
         font pango:DejaVu Sans Mono 10
         position top
         tray_output primary
+        # colors {
+        #         background #222222
+        #         statusline #dddddd
+        #         separator  #666666
+        #         focused_workspace  #77dd77 #285577 #ffffff
+        #         active_workspace   #bbbbbb #222222 #ffffff
+        #         inactive_workspace #444444 #222222 #888888
+        #         urgent_workspace   #ff5555 #222222 #ffffff
+        # }
+# High contrast
+        # colors {
+        #   background         #000000
+        #     statusline         #FFFFFF
+        #     separator          #444444
+        #
+        #     focused_workspace  #FFFFFF #000000 #00FFD7
+        #     active_workspace   #888888 #111111 #FFFFFF
+        #     inactive_workspace #333333 #000000 #777777
+        #     urgent_workspace   #FF0000 #000000 #FFFFFF
+        # }
         colors {
-                background #222222
-                statusline #dddddd
-                separator  #666666
-                focused_workspace  #77dd77 #285577 #ffffff
-                active_workspace   #bbbbbb #222222 #ffffff
-                inactive_workspace #444444 #222222 #888888
-                urgent_workspace   #ff5555 #222222 #ffffff
+          background         #282828
+            statusline         #EBDBB2
+            separator          #504945
+
+# Focused workspace: golden border, dark background, light text
+            focused_workspace  #D79921 #3C3836 #FBF1C7
+
+# Active workspace: subtle contrast
+            active_workspace   #EBDBB2 #3C3836 #FBF1C7
+
+# Inactive workspace: darker tone
+            inactive_workspace #3C3836 #282828 #A89984
+
+# Urgent workspace: red highlight
+            urgent_workspace   #CC241D #282828 #FBF1C7
         }
+
+
+
+
 }
 
 # Custom
@@ -200,11 +232,33 @@ new_window pixel 2
 new_float  pixel 2
 
 # Colors
+# cool
+# # class                 border     background text     indicator child_border
+# client.focused          #77dd77    #285577    #ffffff  #2e9ef4   #285577
+# client.focused_inactive #bbbbbb    #222222    #ffffff  #484848   #222222
+# client.unfocused        #444444    #222222    #aaaaaa  #222222   #222222
+# client.urgent           #ff5555    #222222    #ffffff  #ff5555   #ff5555
+
+# High contrast
 # class                 border     background text     indicator child_border
-client.focused          #77dd77    #285577    #ffffff  #2e9ef4   #285577
-client.focused_inactive #bbbbbb    #222222    #ffffff  #484848   #222222
-client.unfocused        #444444    #222222    #aaaaaa  #222222   #222222
-client.urgent           #ff5555    #222222    #ffffff  #ff5555   #ff5555
+# client.focused          #FFFFFF    #000000    #FFFFFF  #00FFD7   #000000
+# client.focused_inactive #555555    #000000    #CCCCCC  #222222   #000000
+# client.unfocused        #222222    #000000    #BBBBBB  #000000   #000000
+# client.urgent           #FF0000    #000000    #FFFFFF  #FF0000   #FF0000
+
+# Material Dark
+# class                 border     background text     indicator child_border
+# client.focused          #80CBC4    #263238    #ECEFF1  #80CBC4   #263238
+# client.focused_inactive #37474F    #263238    #B0BEC5  #37474F   #263238
+# client.unfocused        #263238    #263238    #90A4AE  #263238   #263238
+# client.urgent           #EF5350    #263238    #FFFFFF  #EF5350   #263238
+
+# class                 border     background text     indicator child_border
+client.focused          #D79921    #282828    #FBF1C7  #D79921   #282828
+client.focused_inactive #3C3836    #282828    #EBDBB2  #3C3836   #282828
+client.unfocused        #3C3836    #282828    #A89984  #3C3836   #282828
+client.urgent           #CC241D    #282828    #FBF1C7  #CC241D   #282828
+
 
 # Suspend
 bindsym $mod+period exec i3lock -c 000000

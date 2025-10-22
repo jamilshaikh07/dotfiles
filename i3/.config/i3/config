@@ -83,9 +83,9 @@ bindsym $mod+Shift+Right focus right
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+l move right
 
-# move workspace to output
-bindsym $mod+Shift+i move workspace to output HDMI-1
-bindsym $mod+Shift+o move workspace to output eDP-1
+# move workspace to another monitor
+bindsym $mod+Shift+i move workspace to output left
+bindsym $mod+Shift+o move workspace to output right
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -235,10 +235,10 @@ bindsym $mod+Right workspace next_on_output
 # print screen
 bindsym $mod+Shift+x exec --no-startup-id flameshot gui
 #print to clipboard
-bindsym $mod+Shift+v exec --no-startup-id flameshot gui -c
+bindsym $mod+Shift+p exec --no-startup-id flameshot gui -c
 
 ## Calendar
-bindsym $mod+c exec --no-startup-id zenity --calendar
+bindsym $mod+Ctrl+c exec --no-startup-id zenity --calendar
 
 # padding for i3wm windows
 # Optional: disable titlebar borders for cleaner gaps
@@ -262,7 +262,7 @@ focus_follows_mouse no
 
 # Send any application to the scratchpad
 bindsym $mod+Shift+minus mark --add sp_app; move scratchpad
-bindsym $mod+minus [con_mark="sp_app"] scratchpad show, move position center, resize set 1400 900
+bindsym $mod+c [con_mark="sp_app"] scratchpad show, move position center, resize set 1400 900
 
 # App → workspace
 assign [class="(?i)code"] $ws3

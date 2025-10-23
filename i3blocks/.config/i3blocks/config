@@ -26,7 +26,9 @@
 # Each block command defaults to the script name to avoid boilerplate.
 command=/usr/share/i3blocks/$BLOCK_NAME
 separator_block_width=15
-markup=none
+markup=pango
+background=#000000
+color=#E0E0E0
 
 # Teleport status
 [tsh]

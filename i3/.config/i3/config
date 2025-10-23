@@ -79,6 +79,7 @@ bindsym $mod+Shift+Left focus left
 bindsym $mod+l focus right
 bindsym $mod+s focus right
 bindsym $mod+Shift+Right focus right
+focus_wrapping workspace
 
 # move focused window
 bindsym $mod+Shift+h move left

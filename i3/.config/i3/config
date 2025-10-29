@@ -8,7 +8,7 @@ bindsym $mod+Shift+comma exec --no-startup-id ~/.config/i3/3_monitors_with_lapto
 bindsym $mod+m exec --no-startup-id xrandr --auto
 
 # wallpaper using feh
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/ubuntu-1.png
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/ubuntu-1.jpg
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).

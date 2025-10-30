@@ -28,6 +28,9 @@ exec --no-startup-id dex --autostart --environment i3
 # start picom
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 
+# restart solaar after every reload or restart
+exec --no-startup-id solaar --window=hide
+
 # Grayscale toggle script
 bindsym $mod+Shift+g exec --no-startup-id ~/.config/i3/toggle-monitor-grayscale.sh
 bindsym $mod+g exec --no-startup-id ~/.config/i3/toggle-monitor-grayscale.sh

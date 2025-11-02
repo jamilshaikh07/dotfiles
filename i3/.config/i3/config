@@ -184,26 +184,6 @@ bar {
         font pango:DejaVu Sans Mono 10
         position top
         tray_output primary
-        # colors {
-        #         background #222222
-        #         statusline #dddddd
-        #         separator  #666666
-        #         focused_workspace  #77dd77 #285577 #ffffff
-        #         active_workspace   #bbbbbb #222222 #ffffff
-        #         inactive_workspace #444444 #222222 #888888
-        #         urgent_workspace   #ff5555 #222222 #ffffff
-        # }
-# High contrast
-        # colors {
-        #   background         #000000
-        #     statusline         #FFFFFF
-        #     separator          #444444
-        #
-        #     focused_workspace  #FFFFFF #000000 #00FFD7
-        #     active_workspace   #888888 #111111 #FFFFFF
-        #     inactive_workspace #333333 #000000 #777777
-        #     urgent_workspace   #FF0000 #000000 #FFFFFF
-        # }
         colors {
           background         #000000
             statusline         #E0E0E0
@@ -223,25 +203,12 @@ bar {
 for_window [class="^.*"] border pixel 2
 for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
 for_window [class="^.*"] client.focused_inactive #bbbbbb #222222 #ffffff #484848   #222222
+
 # Window border thickness
 new_window pixel 2
 new_float  pixel 2
 
 # Colors
-# cool
-# # class                 border     background text     indicator child_border
-# client.focused          #77dd77    #285577    #ffffff  #2e9ef4   #285577
-# client.focused_inactive #bbbbbb    #222222    #ffffff  #484848   #222222
-# client.unfocused        #444444    #222222    #aaaaaa  #222222   #222222
-# client.urgent           #ff5555    #222222    #ffffff  #ff5555   #ff5555
-
-# High contrast
-# class                 border     background text     indicator child_border
-# client.focused          #FFFFFF    #000000    #FFFFFF  #00FFD7   #000000
-# client.focused_inactive #555555    #000000    #CCCCCC  #222222   #000000
-# client.unfocused        #222222    #000000    #BBBBBB  #000000   #000000
-# client.urgent           #FF0000    #000000    #FFFFFF  #FF0000   #FF0000
-
 # class                 border     background text     indicator child_border
 client.focused          #3A7BD5    #000000    #E0E0E0  #3A7BD5   #000000
 client.focused_inactive #1E1E1E    #000000    #BBBBBB  #1E1E1E   #000000
@@ -292,7 +259,7 @@ gaps inner 5px
 gaps outer 1px
 
 # Bluetooth toggle profile
-bindsym $mod+b exec --no-startup-id ~/.config/i3/toggle_bluetooth.sh
+# bindsym $mod+b exec --no-startup-id ~/.config/i3/toggle_bluetooth.sh
 
 # swap caps lock as additional super
 exec_always --no-startup-id "setxkbmap -option caps:super"
@@ -303,7 +270,7 @@ focus_on_window_activation none
 # Disable focus following mouse
 focus_follows_mouse no
 
-# Send any application to the scratchpad
+# # Send any application to the scratchpad
 bindsym $mod+Shift+minus mark --add sp_app; move scratchpad
 bindsym $mod+c [con_mark="sp_app"] scratchpad show, move position center, resize set 1400 900
 

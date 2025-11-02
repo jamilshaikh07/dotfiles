@@ -74,7 +74,7 @@ alias ww='cd ~/workspace'
 alias ic='cd ~/workspace/ic'
 alias dot='cd ~/dotfiles'
 alias beam="cd ~/workspace/beamer"
-alias wasd="cd ~/workspace/tfaz/homelab"
+alias wasd="cd ~/workspace/homelab"
 alias acq="cd ~/workspace/acquia"
 alias is="/home/jamil-shaikh/workspace/acquia/ide"
 

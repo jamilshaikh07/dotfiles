@@ -28,6 +28,11 @@ exec --no-startup-id dex --autostart --environment i3
 # start picom
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 
+# disable screen blanking and power saving
+exec --no-startup-id xset s noblank
+exec --no-startup-id xset s noexpose
+exec --no-startup-id xset -dpms
+
 # restart solaar after every reload or restart
 exec --no-startup-id solaar --window=hide
 

@@ -34,7 +34,8 @@ exec --no-startup-id xset s noblank
 exec --no-startup-id xset s noexpose
 exec --no-startup-id xset -dpms
 
-# restart solaar after every reload or restart
+# kill solaar and restart solaar
+exec --no-startup-id pkill solaar
 exec --no-startup-id solaar --window=hide
 
 # Grayscale toggle script

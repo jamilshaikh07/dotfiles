@@ -5,7 +5,7 @@ set $term --no-startup-id st
 # multiple monitor setup
 bindsym $mod+Shift+m exec --no-startup-id ~/.config/i3/fahad_benq.sh
 bindsym $mod+Shift+comma exec --no-startup-id ~/.config/i3/3_monitors_with_laptop_screen.sh
-bindsym $mod+m exec --no-startup-id xrandr --auto
+bindsym $mod+m exec --no-startup-id ~/.config/i3/laptop_screen_only.sh
 
 # wallpaper using feh
 exec_always --no-startup-id feh --bg-scale $HOME/Pictures/ubuntu-1.png

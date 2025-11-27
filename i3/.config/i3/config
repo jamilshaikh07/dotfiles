@@ -294,3 +294,5 @@ assign [class="(?i)zoom"]  $ws8
 for_window [class="(?i)slack"] move to workspace number $ws7
 for_window [class="(?i)zoom"]  move to workspace number $ws8
 
+# open pavucontrol
+bindsym $mod+Shift+s exec --no-startup-id pavucontrol

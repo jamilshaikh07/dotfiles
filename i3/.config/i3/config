@@ -282,12 +282,12 @@ bindsym $mod+Shift+minus mark --add sp_app; move scratchpad
 bindsym $mod+c [con_mark="sp_app"] scratchpad show, move position center, resize set 1400 900
 
 # App → workspace
-assign [class="(?i)code"] $ws4
 assign [class="(?i)slack"] $ws7
 assign [class="(?i)zoom"]  $ws8
 
-# (Optional) also move them if launched later or if a new window pops up
-for_window [class="(?i)code"] move to workspace number $ws4
+# VS Code - assign to workspace based on project directory
+for_window [class="(?i)code"] exec --no-startup-id ~/.config/i3/code-workspace.sh
+
 for_window [class="(?i)slack"] move to workspace number $ws7
 for_window [class="(?i)zoom"]  move to workspace number $ws8
 

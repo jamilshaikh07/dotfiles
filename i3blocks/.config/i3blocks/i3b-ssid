@@ -17,12 +17,8 @@ fi
 
 echo "  $ssid (${signal:-?}%)"   # full_text
 echo "$ssid"                     # short_text
-# color
-if [ "${signal:-0}" -ge 70 ]; then
-  echo "#a6e3a1"
-elif [ "${signal:-0}" -ge 40 ]; then
-  echo "#f1fa8c"
-else
+# color (white default, red below 20%)
+if [ "${signal:-0}" -lt 20 ]; then
   echo "#ff5555"
 fi
 

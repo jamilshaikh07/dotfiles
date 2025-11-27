@@ -32,12 +32,8 @@ echo "$icon  ${PERCENT}%"
 # short text
 echo "${PERCENT}%"
 
-# color output
-if [[ "$STATUS" == "Discharging" && $PERCENT -le 15 ]]; then
+# color output (white default, red below 20%)
+if [[ "$STATUS" == "Discharging" && $PERCENT -lt 20 ]]; then
   echo "#ff5555"   # red
-elif [[ "$STATUS" == "Discharging" && $PERCENT -le 30 ]]; then
-  echo "#f1fa8c"   # yellow
-else
-  echo "#a6e3a1"   # green
 fi
 

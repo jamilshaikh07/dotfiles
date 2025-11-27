@@ -255,11 +255,9 @@ bindsym $mod+Right workspace next_on_output
 
 # print screen
 bindsym $mod+Shift+x exec --no-startup-id flameshot gui
-#print to clipboard
-bindsym $mod+Shift+p exec --no-startup-id flameshot gui -c
 
 ## Calendar
-bindsym $mod+Ctrl+c exec --no-startup-id zenity --calendar
+bindsym $mod+plus exec --no-startup-id zenity --calendar
 
 # padding for i3wm windows
 # Border for focused window (blue), none for unfocused
@@ -268,9 +266,6 @@ default_border pixel 2
 # Set global gaps
 gaps inner 5px
 gaps outer 1px
-
-# Bluetooth toggle profile
-# bindsym $mod+b exec --no-startup-id ~/.config/i3/toggle_bluetooth.sh
 
 # swap caps lock as additional super
 exec_always --no-startup-id "setxkbmap -option caps:super"
@@ -281,18 +276,20 @@ focus_on_window_activation none
 # Disable focus following mouse
 focus_follows_mouse no
 
-# # Send any application to the scratchpad
-bindsym $mod+Shift+minus mark --add sp_app; move scratchpad
-bindsym $mod+c [con_mark="sp_app"] scratchpad show, move position center, resize set 1400 900
-
 # App → workspace
 assign [class="(?i)slack"] $ws7
 assign [class="(?i)zoom"]  $ws8
-
-# VS Code - assign to workspace based on project directory
-# for_window [class="(?i)code"] move to workspace number $ws3
 for_window [class="(?i)slack"] move to workspace number $ws7
 for_window [class="(?i)zoom"]  move to workspace number $ws8
 
 # open pavucontrol
 bindsym $mod+Shift+s exec --no-startup-id pavucontrol
+
+# open bluetooth manager
+bindsym $mod+Shift+b exec --no-startup-id blueman-manager
+
+# open code
+bindsym $mod+c exec --no-startup-id code
+
+# open brave browser
+bindsym $mod+b exec --no-startup-id brave-browser

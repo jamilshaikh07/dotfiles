@@ -57,6 +57,7 @@ signal=10
 [memory]
 # label=MEM
 label=RAM
+command=$HOME/.config/i3blocks/i3memory
 separator=true
 interval=5
 

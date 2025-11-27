@@ -1,0 +1,12 @@
+#!/bin/sh
+# Show used/total RAM
+
+awk '
+/^MemTotal:/ { total=$2 }
+/^MemAvailable:/ { available=$2 }
+END {
+    used = total - available
+    printf("%.1fG/%.0fG\n", used/1024/1024, total/1024/1024)
+    printf("%.1fG\n", used/1024/1024)
+}
+' /proc/meminfo

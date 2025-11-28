@@ -285,4 +285,4 @@ bindsym $mod+Shift+b exec --no-startup-id blueman-manager
 bindsym $mod+c exec --no-startup-id code
 
 # open brave browser
-bindsym $mod+Shift+b exec --no-startup-id solaar
+bindsym $mod+b exec --no-startup-id solaar

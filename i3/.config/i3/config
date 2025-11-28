@@ -251,6 +251,8 @@ bindsym $mod+Shift+x exec --no-startup-id flameshot gui
 
 ## Calendar
 bindsym $mod+plus exec --no-startup-id zenity --calendar
+# close zenity calendar
+bindsym $mod+Shift+plus exec --no-startup-id pkill zenity
 
 # padding for i3wm windows
 # Border for focused window (blue), none for unfocused

@@ -284,5 +284,8 @@ bindsym $mod+Shift+b exec --no-startup-id blueman-manager
 # open code
 bindsym $mod+c exec --no-startup-id code
 
-# open brave browser
-bindsym $mod+b exec --no-startup-id solaar
+# open chrome browser
+bindsym $mod+b exec --no-startup-id google-chrome-stable
+
+# restart solaar (fix bluetooth mouse)
+bindsym $mod+minus exec --no-startup-id ~/.config/i3/restart-solaar.sh

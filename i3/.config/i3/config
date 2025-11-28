@@ -259,7 +259,7 @@ bindsym $mod+Shift+plus exec --no-startup-id pkill zenity
 default_border pixel 2
 
 # Set global gaps
-gaps inner 5px
+gaps inner 2px
 gaps outer 1px
 
 # swap caps lock as additional super

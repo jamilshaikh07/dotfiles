@@ -86,7 +86,9 @@ focus_wrapping workspace
 
 # move focused window
 bindsym $mod+Shift+h move left
+bindsym $mod+Shift+a move left
 bindsym $mod+Shift+l move right
+bindsym $mod+Shift+s move right
 
 # move workspace to another monitor
 bindsym $mod+Shift+i move workspace to output left
@@ -278,7 +280,7 @@ for_window [class="(?i)slack"] move to workspace number $ws7
 for_window [class="(?i)zoom"]  move to workspace number $ws8
 
 # open pavucontrol
-bindsym $mod+Shift+s exec --no-startup-id pavucontrol
+bindsym $mod+Shift+d exec --no-startup-id pavucontrol
 
 # open bluetooth manager
 bindsym $mod+Shift+b exec --no-startup-id blueman-manager

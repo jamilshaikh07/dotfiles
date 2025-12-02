@@ -109,8 +109,8 @@ set $ws3 "3"
 set $ws4 "4:q"
 set $ws5 "5:w"
 set $ws6 "6:e"
-set $ws7 "7:z"
-set $ws8 "8:x"
+set $ws7 "7"
+set $ws8 "8"
 
 # switch to workspace
 bindsym $mod+q workspace number $ws4

@@ -67,7 +67,8 @@ set $term gnome-terminal
 bindsym $mod+Return exec $term
 
 # kill focused window
-bindsym $mod+Shift+BackSpace kill 
+bindsym $mod+Shift+BackSpace kill
+bindsym --whole-window button2 kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
@@ -93,6 +94,10 @@ bindsym $mod+Shift+s move right
 # move workspace to another monitor
 bindsym $mod+Shift+i move workspace to output left
 bindsym $mod+Shift+o move workspace to output right
+
+# move workspace to monitor with mod+scroll wheel
+bindsym --whole-window $mod+button4 move workspace to output left
+bindsym --whole-window $mod+button5 move workspace to output right
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle

@@ -29,6 +29,13 @@ separator_block_width=15
 markup=pango
 color=#E0E0E0
 
+# Pomodoro timer
+[pomodoro]
+command=$HOME/.config/i3blocks/pomodoro
+interval=1
+signal=12
+separator=true
+
 # Teleport status
 [tsh]
 label=TSH

@@ -300,3 +300,9 @@ bindsym $mod+b exec --no-startup-id brave-browser-stable
 
 # restart solaar (fix bluetooth mouse)
 bindsym $mod+minus exec --no-startup-id ~/.config/i3/restart-solaar.sh
+
+# Pomodoro timer
+bindsym $mod+p exec --no-startup-id ~/.config/i3blocks/pomodoro set 5m
+bindsym $mod+bracketleft exec --no-startup-id ~/.config/i3blocks/pomodoro set 10m
+bindsym $mod+bracketright exec --no-startup-id ~/.config/i3blocks/pomodoro set 25m
+bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3blocks/pomodoro stop

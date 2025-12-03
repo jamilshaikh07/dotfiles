@@ -68,7 +68,7 @@ bindsym $mod+Return exec $term
 
 # kill focused window
 bindsym $mod+Shift+BackSpace kill
-bindsym --whole-window button2 kill
+bindsym --whole-window $mod+button2 kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run

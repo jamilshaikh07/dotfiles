@@ -166,3 +166,16 @@ when() {
   printf "Local: %s\n"   "$(date      -d "$in" +"'"$FMT"'")"
 }
 
+# EST timezone calculator
+# Common format
+FMT='%Y-%m-%d %H:%M:%S %Z'
+
+# Current EST time
+alias estnow='TZ=America/New_York date +"'"$FMT"'"'
+
+# Show both EST and local for any expression
+when_est() {
+  local in="${*:-now}"
+  printf "EST  : %s\n" "$(TZ=America/New_York date -d "$in" +"'"$FMT"'")"
+  printf "Local: %s\n" "$(date -d "$in" +"'"$FMT"'")"
+}

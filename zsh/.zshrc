@@ -179,3 +179,4 @@ when_est() {
   printf "EST  : %s\n" "$(TZ=America/New_York date -d "$in" +"'"$FMT"'")"
   printf "Local: %s\n" "$(date -d "$in" +"'"$FMT"'")"
 }
+source /home/jamil-shaikh/.config/op/plugins.sh

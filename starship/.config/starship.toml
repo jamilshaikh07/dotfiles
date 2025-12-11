@@ -38,14 +38,21 @@ truncation_symbol = '../'
 
 [helm]
 format = 'via [⎈ $version](bold white) '
-
-[kubernetes]
-format = '[k8s $context\($namespace\)](green) '
-disabled = false
-
-[kubernetes.context_aliases]
-
-[kubernetes.user_aliases]
+#
+# [kubernetes]
+# format = '[k8s $context\($namespace\)](green) '
+# disabled = false
+#
+# [kubernetes.context_aliases]
+#
+# [kubernetes.user_aliases]
+[custom.k8s]
+command = 'kubectl config current-context 2>/dev/null'
+when = 'test -n "$KUBECONFIG"'
+shell = ['bash', '-lc']
+symbol = 'k8s'
+style = 'bold green'
+format = '[$symbol $output]($style) '
 
 [terraform]
 format = '[tf $workspace]($style) '
